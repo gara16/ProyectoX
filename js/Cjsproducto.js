@@ -6,19 +6,27 @@ app.controller('producto',function($scope,$http){
 		$scope._productos = response.product;
 	});
 });
-app.controller('agregarP',function($scope,$location,$http){
+app.controller('agregarP',function($scope,$http){
 	$scope.submit = function(){
-		var uname = $scope.username;
-		var password = $scope.password;
+		var id = $scope.idproducto;
+		var nombre = $scope.nombre;
+		var stock = $scope.stock;
+		var precio = $scope.precio;
+		var idmedida = $scope.idmedida;
+		var idtipo = $scope.idtipo;
 
 		$http({
 			method : 'POST',
-			url : 'clogin/logeo',
+			url : 'cProducto/agregarProducto',
 			data : JSON.stringify({
-				'username' : uname,
-				'password' : password
+				'idproducto' : id,
+				'nombre' : nombre,
+				'stock' : stock,
+				'precio' : precio,
+				'idmedida' : idmedida,
+				'idtipo' : idtipo
 			})
-		}).success(function(a){
-			$scope.mensajeok=a.ok;
-			$scope.mensajeerror=a.error;
+		}).success(function(imbox){
+			$scope.mensajeok=imbox.ok;
+			$scope.mensajeerror=imbox.error;
 		});
