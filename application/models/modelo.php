@@ -17,6 +17,18 @@ class Modelo extends CI_Model{
 	
 	}
 
+	function listarProducto(){
+		$datos=$this->db->select('nombreprod,precio,img')->from('producto')->get()->result();
+		return $datos;
+	}
+
+	function modificarProducto($id,$producto){
+		$this->db->where('idproducto',$id);
+		if ($this->db->update('producto',$producto)) {
+			return true;
+		} else return false;
+	}
+
 }
 
 ?>
