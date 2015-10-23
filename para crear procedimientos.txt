@@ -1,0 +1,69 @@
+Primero añadimos en system/database/db_active_rec la sgte funcion:
+
+function freeDBResource($dbh){
+	while(mysqli_next_result($dbh)){
+	 if($l_result= mysqli_store_result($dbh)){
+	 	mysqli_free_result($l_result);
+	 }	
+		
+	}
+}
+
+luego creamos el modelo para el procedimiento e ingresamos el sgte codigo:
+
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); 
+
+class Mprocedimientos extends CI_Model{
+	 function __construct(){
+	 	parent::__construct();	 	
+	 }
+
+public function safe_escape($data){
+	$parametros="";
+	if(count($data)<=0){
+		return "";
+	}
+	for($i=0; $i<count($data);$i++ ){
+		$parametros .= $this->db->escape($data[$i]);
+		if($i < ((count($data)-1))){
+			$parametros.=",";
+		}
+	}
+	return $parametros;
+	
+}	 
+	 
+	 
+	public function set_procedure($procedure, $parameters){
+		if($parameters == NULL){
+			$sql=$this->db->query("Call $procedure()");
+			
+		}else{
+		$parameters=$this->safe_escape($parameters);
+		$sql=$this->db->query("Call $procedure($parameters)");	
+		}
+		if($sql){
+			$this->db->freeDBResource($this->db->conn_id);
+			return true;	
+		}else{
+		$this->db->freeDBResource($this->db->conn_id);
+			return false;	
+		}
+				
+	}
+public function get_procedure($procedure, $parameters){	if($parameters == NULL){
+			$sql=$this->db->query("Call $procedure()");
+			
+		}else{
+		$parameters=$this->safe_escape($parameters);
+		$sql=$this->db->query("Call $procedure($parameters)");
+		}	
+ $rows=array();
+ 	foreach($sql->result_array() as $row){
+		$rows[]=$row;
+	}
+	$this->db->freeDBResource($this->db->conn_id);	
+	return $rows;	
+}
+}
+?>
