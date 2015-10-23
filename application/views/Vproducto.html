@@ -1,0 +1,31 @@
+<!Doctype html>
+<html ng-app="SVentas">
+	<head>
+		<meta charset="UTF-8">
+		<title>AngularJS</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>		
+		<script src="https://code.angularjs.org/1.4.7/angular-route.min.js"></script>		
+		<script src="Cjsproducto.js"></script>		
+	
+	</head> 
+	<body >
+			<div ng-Controller = "agregarP" >
+				<h1>Ingresar Nuevo Producto</h1>
+				<form id="myLogin">
+					IDproducto:<input type="text" id="idproducto" ng-model="idproducto"><br>
+					<br>
+					Nombre:    <input type="text" id="nombre" ng-model="nombre"><br>
+					<br>
+					Precio:    <input type="text" id="precio" ng-model="precio"><br>
+					<br>
+					Stock:     <input type="text" id="stock" ng-model="stock"><br>
+					<br>
+					IDmedida:  <input type="text" id="idmedida" ng-model="idmedida"><br>
+					<br>
+					IDtipo:    <input type="text" id="idtipo" ng-model="idtipo"><br>
+					<br>
+					<button type="button" ng-click="submit()">Login</button>
+				</form>
+			</div>
+	</body>
+</html>
