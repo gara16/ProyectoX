@@ -1,14 +1,19 @@
-var app=angular.module('SVentas',[]);
+var app=angular.module('SVentas',['ngRoute']);
 
-app.controller('producto',function($scope,$http){
-	$http.get('http://localhost:8081/productoAngularjs/dbproducto.json')
-	.success(function(response){
-		$scope._productos = response.product;
+app.config(function($routeProvider){
+	$routeProvider
+	.when('/', {
+		templateUrl: 'template/Vproducto.html',
+		controller: 'agregarP'
+	})
+	.otherwise({
+		redirectTo: '/'
 	});
 });
+
 app.controller('agregarP',function($scope,$http){
 	$scope.submit = function(){
-		var id = $scope.idproducto;
+		
 		var nombre = $scope.nombre;
 		var stock = $scope.stock;
 		var precio = $scope.precio;
@@ -19,7 +24,6 @@ app.controller('agregarP',function($scope,$http){
 			method : 'POST',
 			url : 'cProducto/agregarProducto',
 			data : JSON.stringify({
-				'idproducto' : id,
 				'nombre' : nombre,
 				'stock' : stock,
 				'precio' : precio,
@@ -30,3 +34,5 @@ app.controller('agregarP',function($scope,$http){
 			$scope.mensajeok=imbox.ok;
 			$scope.mensajeerror=imbox.error;
 		});
+	};
+});
