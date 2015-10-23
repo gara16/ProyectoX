@@ -8,10 +8,13 @@ class Modelo extends CI_Model{
 		$this->load->database();
 	}
 
-	function agregarProducto($producto){
+	function agregarProduct($producto){
 		if ($this->db->insert('producto',$producto)) {
 			return true;
-		} else return false;
+		} else {
+			return false;
+		}
+	
 	}
 
 }

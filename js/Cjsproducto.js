@@ -14,25 +14,25 @@ app.config(function($routeProvider){
 app.controller('agregarP',function($scope,$http){
 	$scope.submit = function(){
 		
-		var nombre = $scope.nombre;
-		var stock = $scope.stock;
+		var nombre = $scope.nombre;		
 		var precio = $scope.precio;
+		var stock = $scope.stock;
 		var idmedida = $scope.idmedida;
 		var idtipo = $scope.idtipo;
 
 		$http({
 			method : 'POST',
-			url : 'cProducto/agregarProducto',
+			url : 'cproducto/agregarProducto',
 			data : JSON.stringify({
 				'nombre' : nombre,
-				'stock' : stock,
 				'precio' : precio,
+				'stock' : stock,
 				'idmedida' : idmedida,
 				'idtipo' : idtipo
 			})
-		}).success(function(imbox){
-			$scope.mensajeok=imbox.ok;
-			$scope.mensajeerror=imbox.error;
+		}).success(function(a){
+			$scope.mensajeok=a.ok;
+			$scope.mensajeerror=a.error;
 		});
 	};
 });

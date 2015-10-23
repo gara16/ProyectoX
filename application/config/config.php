@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'localhost:1234/ProyectoX/';
+$config['base_url']	= '';
 
 /*
 |--------------------------------------------------------------------------
