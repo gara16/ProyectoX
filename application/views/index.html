@@ -8,11 +8,21 @@
 		<script src="js/Cjsproducto.js"></script>		
 	
 	</head> 
-	<body >
-			<div ng-controller="agregarP">
+	<body ng-controller="eventos">
+
+			
+				<button type="button" ng-click="agregar()">Agregar</button>
+			    <button type="button" ng-click="listar()">Listar</button>
+			    
+			
+
+			<div ng-controller="agregarP" ng-show="flagP">
 				
-					<form id="Producto" ng-show="flag">
+					<form id="AProducto">
 						<h1>Ingresar Nuevo Producto</h1>
+						<h1>{{mensajeok}}</h1>
+					    <h1>{{mensajeerror}}</h1>
+
 						Nombre:    <input type="text" id="nombre" ng-model="nombre"><br>
 						<br>
 						Precio:    <input type="text" id="precio" ng-model="precio"><br>
@@ -24,11 +34,19 @@
 						IDtipo:    <input type="text" id="idtipo" ng-model="idtipo"><br>
 						<br>
 						<button type="button" ng-click="submit()">Agregar
-						</button>
+						</button><br>
 					</form>
-					<h1>{{mensajeok}}</h1>
-					<h1>{{mensajeerror}}</h1>
 					
 			</div>
+
+			<div ng-controller="ListarP" ng-show="flagL">
+				
+					<p ng-repeat="list in listaP">
+					 {{ list.nombreprod +"   "+ list.precio}}
+
+					</p>
+					
+			</div>
+			
 	</body>
 </html>

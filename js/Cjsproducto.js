@@ -1,10 +1,31 @@
-var app=angular.module('SVentas',['ngRoute']);
+var app=angular.module('SVentas',[]);
 
-app.controller('agregarP',function($scope,$http){
-	$scope.flag=true;
+
+app.controller('eventos',['$scope',function($scope){
+	$scope.flagP=false;
+	$scope.flagL=false;
+	
+	$scope.agregar = function(){
+		$scope.flagL=false;
+		$scope.flagP=true;
+		
+	
+		
+	};
+	$scope.listar=function(){
+		$scope.flagP=false;
+		$scope.flagL=true;
+		 
+		 
+	};
+
+}]);
+
+app.controller('agregarP',['$scope','$http',function($scope,$http){
+	
+	
 	$scope.submit = function(){
 		
-		$scope.flag=false;
 		var nombre = $scope.nombre;		
 		var precio = $scope.precio;
 		var stock = $scope.stock;
@@ -26,5 +47,17 @@ app.controller('agregarP',function($scope,$http){
 			$scope.mensajeerror=a.error;
 		});
 	};
-});
+}]);
 
+app.controller('ListarP',['$scope','$http',function($scope,$http){
+	
+		$http({
+			method : 'GET',
+			url : 'cproducto/listarProducto',
+			
+		}).success(function(a){
+			$scope.listaP=a.lista;
+			$scope.mensaje=a.error;
+		});
+	
+}]);
