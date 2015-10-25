@@ -1,19 +1,10 @@
 var app=angular.module('SVentas',['ngRoute']);
 
-app.config(function($routeProvider){
-	$routeProvider
-	.when('/', {
-		templateUrl: 'template/Vproducto.html',
-		controller: 'agregarP'
-	})
-	.otherwise({
-		redirectTo: '/'
-	});
-});
-
 app.controller('agregarP',function($scope,$http){
+	$scope.flag=true;
 	$scope.submit = function(){
 		
+		$scope.flag=false;
 		var nombre = $scope.nombre;		
 		var precio = $scope.precio;
 		var stock = $scope.stock;
@@ -36,3 +27,4 @@ app.controller('agregarP',function($scope,$http){
 		});
 	};
 });
+

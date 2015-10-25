@@ -3,12 +3,32 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>AngularJS</title>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>		
-		<script src="https://code.angularjs.org/1.4.7/angular-route.min.js"></script>		
+		<script src="angular.min.js"></script>		
+		<script src="angular-route.min.js"></script>		
 		<script src="js/Cjsproducto.js"></script>		
 	
 	</head> 
 	<body >
-			<div ng-View ></div>
+			<div ng-controller="agregarP">
+				
+					<form id="Producto" ng-show="flag">
+						<h1>Ingresar Nuevo Producto</h1>
+						Nombre:    <input type="text" id="nombre" ng-model="nombre"><br>
+						<br>
+						Precio:    <input type="text" id="precio" ng-model="precio"><br>
+						<br>
+						Stock:     <input type="text" id="stock" ng-model="stock"><br>
+						<br>
+						IDmedida:  <input type="text" id="idmedida" ng-model="idmedida"><br>
+						<br>
+						IDtipo:    <input type="text" id="idtipo" ng-model="idtipo"><br>
+						<br>
+						<button type="button" ng-click="submit()">Agregar
+						</button>
+					</form>
+					<h1>{{mensajeok}}</h1>
+					<h1>{{mensajeerror}}</h1>
+					
+			</div>
 	</body>
 </html>
