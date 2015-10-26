@@ -28,6 +28,15 @@ class Cproducto extends CI_Controller{
 		}
 		echo json_encode($mensaje);
 	}
+	function listarProducto(){
+		$array = $this->modelo->listarProducto();
+		if (count($array)>0) {
+			$valor['lista']=$array;
+		} else{
+			$valor['error']="No hay Productos";
+		}
+		echo json_encode($valor);
+	}
 }
 
 ?>

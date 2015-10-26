@@ -3,12 +3,80 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>AngularJS</title>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>		
-		<script src="https://code.angularjs.org/1.4.7/angular-route.min.js"></script>		
+		<script src="angular.min.js"></script>		
+		<script src="angular-route.min.js"></script>		
 		<script src="js/Cjsproducto.js"></script>		
 	
 	</head> 
-	<body >
-			<div ng-View ></div>
+	<body ng-controller="eventos">
+
+			
+				<button type="button" ng-click="agregar()">Agregar</button>
+			    <button type="button" ng-click="listar()">Listar</button>
+			    
+			
+			 <div ng-controller="agregarP" ng-show="flagP">
+				
+					<h1>Ingresar Nuevo Producto</h1>
+						
+					<h1 ><font color="red">{{mensajeok}}</font></h1>
+					<h1 ><font color="red">{{mensajeerror}}</font></h1>
+
+					<form name="Aproducto"  novalidate>
+						
+						Nombre:    <input name="Nombre" type="text" id="nombre" ng-model="nombre" placeholder="Ingresar Nombre" required ><br>
+						<span style = "color:red" ng-show = "Aproducto.Nombre.$dirty && Aproducto.Nombre.$invalid">
+                        <span ng-show = "Aproducto.Nombre.$error.required">Nombre is required.</span>
+                     	</span>
+						<br>
+						Precio:    <input name="Precio" type="text" id="precio" ng-model="precio" placeholder="Ingresar Precio 00.0" required><br>
+						<span style = "color:red" ng-show = "Aproducto.Precio.$dirty && Aproducto.Precio.$invalid">
+                        <span ng-show = "Aproducto.Precio.$error.required">Precio is required.</span>
+                     	</span>
+						<br>
+						Stock:     <input name="Stock" type="text" id="stock" ng-model="stock" placeholder="Ingresar stock kilo,litro,unidad" required><br>
+						<span style = "color:red" ng-show = "Aproducto.Stock.$dirty && Aproducto.Stock.$invalid">
+                        <span ng-show = "Aproducto.Stock.$error.required">Stock is required.</span>
+                     	</span>
+						<br>
+						IDmedida:  <input name="Medida" type="text" id="idmedida" ng-model="idmedida" placeholder="Ingresar id_medida" required><br>
+						<span style = "color:red" ng-show = "Aproducto.Medida.$dirty && Aproducto.Medida.$invalid">
+                        <span ng-show = "Aproducto.Medida.$error.required">Medida is required.</span>
+                     	</span>
+						<br>
+						IDtipo:    <input name="Tipo" type="text" id="idtipo" ng-model="idtipo" placeholder="Ingresar id_tipo" required><br>
+						<span style = "color:red" ng-show = "Aproducto.Tipo.$dirty && Aproducto.Tipo.$invalid">
+                        <span ng-show = "Aproducto.Tipo.$error.required">Tipo is required.</span>
+                     	</span>
+						<br>
+						<button type="button" ng-click="reset()"> Reset </button>
+						<button  ng-disabled = "Aproducto.Nombre.$dirty &&
+                        Aproducto.Nombre.$invalid || Aproducto.Precio.$dirty &&
+                        Aproducto.Precio.$invalid || Aproducto.Medida.$dirty &&
+                        Aproducto.Medida.$invalid || Aproducto.Tipo.$dirty &&
+                        Aproducto.Tipo.$invalid" ng-click="submit()">Enviar</button><br>
+
+					</form>
+					
+			</div>   
+			
+
+			<div ng-controller="ListarP" ng-show="flagL">
+				<table border="1"> Lista de Productos
+					<tr>
+						<td>Nombre Producto</td>
+						<td>Precio Producto</td>
+						<td>Imagen Producto</td>
+						
+					</tr>	
+					<tr ng-repeat="list in listaP">
+						<td> {{ list.nombreprod}}</td>
+						<td>{{list.precio}}</td>
+						<td>{{list.img}}</td>
+						
+					</tr>	
+				</table>	
+			</div>
+			
 	</body>
 </html>

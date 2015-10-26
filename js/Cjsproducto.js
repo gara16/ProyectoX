@@ -1,17 +1,29 @@
-var app=angular.module('SVentas',['ngRoute']);
+var app=angular.module('SVentas',[]);
 
-app.config(function($routeProvider){
-	$routeProvider
-	.when('/', {
-		templateUrl: 'template/Vproducto.html',
-		controller: 'agregarP'
-	})
-	.otherwise({
-		redirectTo: '/'
-	});
-});
 
-app.controller('agregarP',function($scope,$http){
+app.controller('eventos',['$scope',function($scope){
+	$scope.flagP=false;
+	$scope.flagL=false;
+	
+	$scope.agregar = function(){
+		$scope.flagL=false;
+		$scope.flagP=true;
+			
+	};
+
+
+	$scope.listar=function(){
+		$scope.flagP=false;
+		$scope.flagL=true;
+		 
+		 
+	};
+
+}]);
+
+app.controller('agregarP',['$scope','$http',function($scope,$http){
+	
+	
 	$scope.submit = function(){
 		
 		var nombre = $scope.nombre;		
@@ -35,4 +47,29 @@ app.controller('agregarP',function($scope,$http){
 			$scope.mensajeerror=a.error;
 		});
 	};
-});
+
+	$scope.reset = function(){
+		
+		$scope.mensajeok="";
+		$scope.mensajeerror="";
+		$scope.nombre="";		
+		$scope.precio="";
+		$scope.stock="";
+		$scope.idmedida="";
+		$scope.idtipo="";
+	};
+
+}]);
+
+app.controller('ListarP',['$scope','$http',function($scope,$http){
+	
+		$http({
+			method : 'GET',
+			url : 'cproducto/listarProducto',
+			
+		}).success(function(a){
+			$scope.listaP=a.lista;
+			$scope.mensaje=a.error;
+		});
+	
+}]);
