@@ -8,10 +8,10 @@ app.controller('eventos',['$scope',function($scope){
 	$scope.agregar = function(){
 		$scope.flagL=false;
 		$scope.flagP=true;
-		
-	
-		
+			
 	};
+
+
 	$scope.listar=function(){
 		$scope.flagP=false;
 		$scope.flagL=true;
@@ -47,6 +47,18 @@ app.controller('agregarP',['$scope','$http',function($scope,$http){
 			$scope.mensajeerror=a.error;
 		});
 	};
+
+	$scope.reset = function(){
+		
+		$scope.mensajeok="";
+		$scope.mensajeerror="";
+		$scope.nombre="";		
+		$scope.precio="";
+		$scope.stock="";
+		$scope.idmedida="";
+		$scope.idtipo="";
+	};
+
 }]);
 
 app.controller('ListarP',['$scope','$http',function($scope,$http){
