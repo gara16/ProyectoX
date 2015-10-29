@@ -37,6 +37,24 @@ class Cproducto extends CI_Controller{
 		}
 		echo json_encode($valor);
 	}
+	function listarTipo(){
+		$array = $this->modelo->listartipoprod();
+		if (count($array)>0) {
+			$valor['lista']=$array;
+		} else{
+			$valor['error']="No hay Tipos";
+		}
+		echo json_encode($valor);
+	}
+	function listarMedida(){
+		$array = $this->modelo->listarmedida();
+		if (count($array)>0) {
+			$valor['lista']=$array;
+		} else{
+			$valor['error']="No hay Medidas";
+		}
+		echo json_encode($valor);
+	}
 }
 
 ?>
