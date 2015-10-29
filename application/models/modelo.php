@@ -18,7 +18,17 @@ class Modelo extends CI_Model{
 	}
 
 	function listarProducto(){
-		$datos=$this->db->select('nombreprod,precio,img')->from('producto')->get()->result();
+		$datos=$this->db->select('idproducto,nombreprod,precio,img')->from('producto')->get()->result();
+		return $datos;
+	}
+
+	function listartipoprod(){
+		$datos=$this->db->select('idtipoprod,tipoprod,descripcion')->from('tipoproducto')->get()->result();
+		return $datos;
+	}
+
+	function listarmedida(){
+		$datos=$this->db->select('idmedida,medida,descripcion')->from('unidadmedida')->get()->result();
 		return $datos;
 	}
 

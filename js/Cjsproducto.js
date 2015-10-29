@@ -26,22 +26,10 @@ app.controller('agregarP',['$scope','$http',function($scope,$http){
 	
 	$scope.submit = function(){
 		
-		var nombre = $scope.nombre;		
-		var precio = $scope.precio;
-		var stock = $scope.stock;
-		var idmedida = $scope.idmedida;
-		var idtipo = $scope.idtipo;
-
 		$http({
 			method : 'POST',
 			url : 'cproducto/agregarProducto',
-			data : JSON.stringify({
-				'nombre' : nombre,
-				'precio' : precio,
-				'stock' : stock,
-				'idmedida' : idmedida,
-				'idtipo' : idtipo
-			})
+			data : JSON.stringify($scope.producto)
 		}).success(function(a){
 			$scope.mensajeok=a.ok;
 			$scope.mensajeerror=a.error;
@@ -50,14 +38,28 @@ app.controller('agregarP',['$scope','$http',function($scope,$http){
 
 	$scope.reset = function(){
 		
+		$scope.producto="";
 		$scope.mensajeok="";
 		$scope.mensajeerror="";
-		$scope.nombre="";		
-		$scope.precio="";
-		$scope.stock="";
-		$scope.idmedida="";
-		$scope.idtipo="";
 	};
+
+	$http({
+			method : 'GET',
+			url : 'cproducto/listarTipo',
+			
+		}).success(function(b){
+			$scope.listaT=b.lista;
+			$scope.mensaje=b.error;
+		});
+
+	$http({
+			method : 'GET',
+			url : 'cproducto/listarMedida',
+			
+		}).success(function(c){
+			$scope.listaM=c.lista;
+			$scope.mensaje=c.error;
+		});	
 
 }]);
 
@@ -71,5 +73,12 @@ app.controller('ListarP',['$scope','$http',function($scope,$http){
 			$scope.listaP=a.lista;
 			$scope.mensaje=a.error;
 		});
+
+		$scope.eliminar = function(){
+		
+		
+		$scope.death= $scope.listaP;
+
+	};
 	
 }]);
