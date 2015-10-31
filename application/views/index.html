@@ -13,7 +13,7 @@
         <!-- Optional theme -->
         <link rel="stylesheet" href="bootstrap-theme.css">
         <style> .btn{margin-bottom: 10px} </style>
-
+        <script src="jquery.min.js"></script>
 		<script src="angular.min.js"></script>		
 		<script src="angular-route.min.js"></script>		
 		<script src="js/Cjsproducto.js"></script>		
@@ -46,7 +46,7 @@
                 </div>
          	</div>
         
-			 <div class ="jumbobotron" ng-controller="agregarP" ng-show="flagP">
+         	<div class ="jumbobotron" ng-controller="agregarP" ng-show="flagP">
 				
 					<h1>Ingresar Nuevo Producto</h1>
 						
@@ -104,6 +104,13 @@
 	                     	</span>
 					      </div>
 					    </div>
+
+					    <div data-ng-controller="EnviarImg">
+				        	<form name="upload" ng-submit="uploadFile()">
+				                <input type="file" name="file" uploader-model="Img.file" /> <br>
+				                <input type="submit" value="Enviar"> 
+				            </form>
+				        </div>
 						
 						    <div class="form-group">        
 						      <div class="col-sm-offset-2 col-sm-10">
@@ -120,14 +127,21 @@
 			</div>   
 			
 			<div class="table-hover" ng-controller="ListarP" ng-show="flagL">
-				<table class="table"> <h1>Ingresar Nuevo Producto
+					
+					<div class="form-group">
+					     <div class="col-sm-4">
+					     	<h1>Lista de Productos</h1>
+					        <input type="search"  class="form-control" ng-model="busqueda"   placeholder="Buscar Producto">
+					    </div>
+					</div>
+					<table class="table">
 					<tr >
 						<td>Nombre Producto</td>
 						<td>Precio Producto</td>
 						<td>Imagen Producto</td>
 						
 					</tr>	
-					<tr ng-repeat="list in listaP">
+					<tr ng-repeat="list in listaP | filter: busqueda">
 						<td>{{list.nombreprod}}</td>
 						<td>{{list.precio |currency: $}}</td>
 						<td>
@@ -138,6 +152,15 @@
 				</table>	
 			</div>
 			
+			<div class ="jumbobotron" ng-controller="modificarP" ng-show="flagM">
+				
+					<h1>Modificar Producto</h1>
+						
+					<h1 ><font color="red">{{mensaje_ok}}</font></h1>
+					<h1 ><font color="red">{{mensaje_error}}</font></h1>
+
+					
+			</div> 
 			
 
 	</body>
