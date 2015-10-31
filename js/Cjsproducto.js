@@ -38,7 +38,7 @@ app.controller('agregarP',['$scope','$http',"$q",function($scope,$http,$q){
 		
 		$http({
 			method : 'POST',
-			url : 'cproducto/agregarProducto',
+			url : 'index.php/cproducto/agregarProducto',
 			data : JSON.stringify($scope.producto)
 		}).success(function(a){
 			$scope.mensajeok=a.ok;
@@ -55,7 +55,7 @@ app.controller('agregarP',['$scope','$http',"$q",function($scope,$http,$q){
 
 	$http({
 			method : 'GET',
-			url : 'cproducto/listarTipo',
+			url : 'index.php/cproducto/listarTipo',
 			
 		}).success(function(b){
 			$scope.listaT=b.lista;
@@ -64,7 +64,7 @@ app.controller('agregarP',['$scope','$http',"$q",function($scope,$http,$q){
 
 	$http({
 			method : 'GET',
-			url : 'cproducto/listarMedida',
+			url : 'index.php/cproducto/listarMedida',
 			
 		}).success(function(c){
 			$scope.listaM=c.lista;
@@ -77,7 +77,7 @@ app.controller('ListarP',['$scope','$http',function($scope,$http){
 	
 		$http({
 			method : 'GET',
-			url : 'cproducto/listarProducto',
+			url : 'index.php/cproducto/listarProducto',
 			
 		}).success(function(a){
 			$scope.listaP=a.lista;
