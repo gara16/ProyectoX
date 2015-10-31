@@ -67,6 +67,11 @@ class Modelo extends CI_Model{
 			return true;
 		} else return false;
 	}
+	function agregarDatos($datos){
+		if ($this->insert('datos',$datos)) {
+			return true;
+		} else return false;
+	}
 	function modificarUsuario($idUsuario,$usuario){
 		$this->db->where('idusuario',$idUsuario);
 		if ($this->db->update('usuario',$usuario)) {
