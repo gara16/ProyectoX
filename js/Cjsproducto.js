@@ -33,7 +33,24 @@ app.controller('eventos',['$scope',function($scope){
 
 app.controller('agregarP',['$scope','$http',"$q",function($scope,$http,$q){
 	
-	
+	$http({
+			method : 'GET',
+			url : 'cproducto/listarTipo',
+			
+		}).success(function(b){
+			$scope.listaT=b.lista;
+			$scope.mensaje=b.error;
+		});
+
+	$http({
+			method : 'GET',
+			url : 'cproducto/listarMedida',
+			
+		}).success(function(c){
+			$scope.listaM=c.lista;
+			$scope.mensaje=c.error;
+	});
+
 	$scope.submit = function(){
 		
 		$http({
@@ -53,23 +70,9 @@ app.controller('agregarP',['$scope','$http',"$q",function($scope,$http,$q){
 		$scope.mensajeerror="";
 	};
 
-	$http({
-			method : 'GET',
-			url : 'cproducto/listarTipo',
-			
-		}).success(function(b){
-			$scope.listaT=b.lista;
-			$scope.mensaje=b.error;
-		});
+	
 
-	$http({
-			method : 'GET',
-			url : 'cproducto/listarMedida',
-			
-		}).success(function(c){
-			$scope.listaM=c.lista;
-			$scope.mensaje=c.error;
-		});	
+
 
 }]);
 
@@ -95,55 +98,34 @@ app.controller('ListarP',['$scope','$http',function($scope,$http){
 
 app.controller('modificarP',['$scope','$http',function($scope,$http){
 	
+	$http({
+			method : 'GET',
+			url : 'cproducto/listarProducto',
+			
+		}).success(function(a){
+			$scope.listaMP=a.lista;
+			$scope.mensaje=a.error;
+	});
+
+	$http({
+			method : 'GET',
+			url : 'cproducto/listarTipo',
+			
+		}).success(function(b){
+			$scope.listaMT=b.lista;
+			$scope.mensaje=b.error;
+		});
+
+	$http({
+			method : 'GET',
+			url : 'cproducto/listarMedida',
+			
+		}).success(function(c){
+			$scope.listaMM=c.lista;
+			$scope.mensaje=c.error;
+	});	
 		
 
 }]);
 
-app.controller('EnviarImg', ['$scope', 'upload', function ($scope, upload) 
-{
-	$scope.uploadFile = function()
-	{
-		
-		upload.uploadFile($scope.Img).then(function(res)
-		{
-			console.log(res);
-		})
-	};
-}]);
 
-app.directive('uploaderModel', ["$parse", function ($parse) {
-	return {
-		restrict: 'A',
-		link: function (scope, iElement, iAttrs) 
-		{
-			iElement.on("change", function(e)
-			{
-				$parse(iAttrs.uploaderModel).assign(scope, iElement[0].files[0]);
-			});
-		}
-	};
-}]);
-
-app.service('upload', ["$http", "$q", function ($http, $q) 
-{
-	this.uploadFile = function(file, name)
-	{
-		var deferred = $q.defer();
-		var formData = new FormData();
-		formData.append("name", name);
-		formData.append("file", file);
-		return $http.post("server.php", formData, {
-			headers: {
-				"Content-type": undefined
-			},
-			transformRequest: angular.identity
-		})
-		.success(function(res)
-		{
-			deferred.resolve(res);
-		})
-		.error(function(msg, code)
-		{
-			deferred.reject(msg);
-		})
-		return deferred.promise;]);

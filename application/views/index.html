@@ -2,9 +2,7 @@
 <html ng-app="SVentas">
 	<head>
 		<meta charset="UTF-8">
-		
-		<meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>AngularJS</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
@@ -12,12 +10,12 @@
         <link rel="stylesheet" href="bootstrap.min.css">
         <!-- Optional theme -->
         <link rel="stylesheet" href="bootstrap-theme.css">
-        <style> .btn{margin-bottom: 10px} </style>
+        <style> .btn{margin-bottom: 10px} </style>	
         <script src="jquery.min.js"></script>
 		<script src="angular.min.js"></script>		
-		<script src="angular-route.min.js"></script>		
-		<script src="js/Cjsproducto.js"></script>		
-	
+		<script src="angular-route.min.js"></script>	
+		<script src="js/Cjsproducto.js"></script>
+			
 	</head> 
 	<body ng-controller="eventos">
 			<nav class="navbar navbar-fixed-top navbar-inverse">
@@ -88,7 +86,7 @@
 					    <div class="form-group">
 					      <label class="control-label col-sm-2" for="Idmedida">IDMEDIDA:</label>
 					      <div class="col-sm-4">
-					        <select name="Medidas" class="form-control" id="idmedida" ng-options="c.idmedida as c.medida for c in listaM" ng-model="producto.idmedida" placeholder="Ingresar id_medida" required></select>
+					        <select name="Medidas" class="form-control" id="idmedida" ng-options="c.idmedida as c.medida for c in listaM" ng-model="producto.idmedida"  required></select>
 							<span style = "color:red" ng-show = "Aproducto.Medidas.$dirty && Aproducto.Medidas.$invalid">
 	                        <span ng-show = "Aproducto.Medidas.$error.required">Medida is required.</span>
 	                     	</span>
@@ -98,20 +96,14 @@
 					    <div class="form-group">
 					      <label class="control-label col-sm-2" for="IDTIPO">IDTIPO:</label>
 					      <div class="col-sm-4">
-					        <select name="Tipos" class="form-control" id="idtipo" ng-options="b.idtipoprod as b.tipoprod for b in listaT" ng-model="producto.idtipo" placeholder="Ingresar id_tipo" required></select>
+					        <select name="Tipos" class="form-control" id="idtipo" ng-options="b.idtipoprod as b.tipoprod for b in listaT" ng-model="producto.idtipo"  required></select>
 					        <span style = "color:red" ng-show = "Aproducto.Tipos.$dirty && Aproducto.Tipos.$invalid">
 	                        <span ng-show = "Aproducto.Tipos.$error.required">Tipo is required.</span>
 	                     	</span>
 					      </div>
 					    </div>
 
-					    <div data-ng-controller="EnviarImg">
-				        	<form name="upload" ng-submit="uploadFile()">
-				                <input type="file" name="file" uploader-model="Img.file" /> <br>
-				                <input type="submit" value="Enviar"> 
-				            </form>
-				        </div>
-						
+					    				
 						    <div class="form-group">        
 						      <div class="col-sm-offset-2 col-sm-10">
 						        <a class="btn btn-default btn-primary" type="button" ng-click="reset()"> Reset </a>
@@ -159,9 +151,76 @@
 					<h1 ><font color="red">{{mensaje_ok}}</font></h1>
 					<h1 ><font color="red">{{mensaje_error}}</font></h1>
 
+
+					<form class="form-horizontal" role="form" name="Mproducto"  novalidate>
+						
+						<div class="form-group">
+					      <label class="control-label col-sm-2" for="nombre">Nombre:</label>
+					      <div class="col-sm-4">
+					        <select name="Nombres" class="form-control" id="nombre" 
+					        ng-options="d.idnombreprod as d.nombreprod for d in listaMP"  
+					        ng-model="hola" required></select>{{hola}}
+					        <span style = "color:red" ng-show = "Mproducto.Nombres.$dirty && Mproducto.Nombres.$invalid">
+	                        <span ng-show = "Mproducto.Nombres.$error.required">Nombre is required.</span>
+	                     	</span>
+	                     </div>
+					    </div>
+
+					    <div class="form-group">
+					      <label class="control-label col-sm-2" for="Precio">Precio:</label>
+					      <div class="col-sm-4">
+					        <input name="Precios" type="text"  class="form-control" id="precio" ng-model="d.precio" placeholder="Ingresar Precio 00.0" required>
+					        <span style = "color:red" ng-show = "Mproducto.Precios.$dirty && Mproducto.Precios.$invalid">
+	                        <span ng-show = "Aproducto.Precios.$error.required">Precio is required.</span>
+	                     	</span>
+					      </div>
+					    </div>
+
+					    <div class="form-group">
+					      <label class="control-label col-sm-2" for="Stock">Stock:</label>
+					      <div class="col-sm-4">
+					        <input name="Stocks" type="text"  class="form-control" id="stock" ng-model="d.stock" placeholder="Ingresar stock kilo,litro,unidad" required>
+							<span style = "color:red" ng-show = "Mproducto.Stocks.$dirty && Mproducto.Stocks.$invalid">
+	                        <span ng-show = "Mproducto.Stocks.$error.required">Stock is required.</span>
+	                     	</span>
+					      </div>
+					    </div>
+
+					    <div class="form-group">
+					      <label class="control-label col-sm-2" for="Idmedida">IDMEDIDA:</label>
+					      <div class="col-sm-4">
+					        <select name="Medidas" class="form-control" id="idmedida" ng-options="c.idmedida as c.medida for c in listaMM" ng-model="d.idmedida" required></select>
+							<span style = "color:red" ng-show = "Mproducto.Medidas.$dirty && Mproducto.Medidas.$invalid">
+	                        <span ng-show = "Mproducto.Medidas.$error.required">Medida is required.</span>
+	                     	</span>
+					      </div>
+					    </div>
+
+					    <div class="form-group">
+					      <label class="control-label col-sm-2" for="IDTIPO">IDTIPO:</label>
+					      <div class="col-sm-4">
+					        <select name="Tipos" class="form-control" id="idtipo" ng-options="b.idtipoprod as b.tipoprod for b in listaMT" ng-model="d.idtipo"  required></select> 
+					        <span style = "color:red" ng-show = "Mproducto.Tipos.$dirty && Mproducto.Tipos.$invalid">
+	                        <span ng-show = "Mproducto.Tipos.$error.required">Tipo is required.</span>
+	                     	</span>
+					      </div>
+					    </div>
+
+					    				
+						    <div class="form-group">        
+						      <div class="col-sm-offset-2 col-sm-10">
+						        <a class="btn btn-default btn-primary" type="button" ng-click="reset()"> Reset </a>
+								<a class="btn btn-default btn-primary"  ng-disabled = "Mproducto.Nombres.$dirty &&
+		                        Mproducto.Nombres.$invalid || Mproducto.Precios.$dirty &&
+		                        Mproducto.Precios.$invalid || Mproducto.Medidas.$dirty &&
+		                        Mproducto.Medidas.$invalid || Mproducto.Tipos.$dirty &&
+		                        Mproducto.Tipos.$invalid" ng-click="guardar()">Enviar</a>
+						      </div>
+						    </div>
+					</form>
+
 					
 			</div> 
 			
-
-	</body>
+    </body>
 </html>

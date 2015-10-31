@@ -55,6 +55,17 @@ class Cproducto extends CI_Controller{
 		}
 		echo json_encode($valor);
 	}
+
+	function buscarProducto($id){
+		$array = $this->modelo->buscarProducto($id);
+		if (count($array)>0) {
+			$valor['lista']=$array;
+		} else{
+			$valor['error']="No Existe Producto";
+		}
+		echo json_encode($valor);
+	}
+
 }
 
 ?>
