@@ -72,8 +72,11 @@ class Cproducto extends CI_Controller{
 		echo json_encode($valor);
 	}
 
-	function buscarProducto($id){
+	function buscarProducto(){
+		$_POST=json_decode(file_get_contents('php://input'),TRUE);
+		$id=$this->input->post('idproducto');
 		$array = $this->modelo->buscarProducto($id);
+		$valor['id']=$id;
 		if (count($array)>0) {
 			$valor['lista']=$array;
 		} else{

@@ -16,7 +16,9 @@ class Modelo extends CI_Model{
 		} else return false;
 	}
 	function listarProducto(){
-		$datos=$this->db->select('idproducto,nombreprod,precio,img')->from('producto')->get()->result();
+		$datos=$this->db->select('idproducto,nombreprod,precio,stock,img')
+						->from('producto')
+						->get()->result();
 		return $datos;
 	}
 	function listarPorTipo($tipoProd){
