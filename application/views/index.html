@@ -36,7 +36,7 @@
             </div>
          	
         
-         	<div  class="container" ng-controller="agregarP" >
+         	<div  class="container" ng-controller="Producto" >
 				
 					<h1>Ingresar Nuevo Producto</h1>
 						
@@ -48,7 +48,7 @@
 						<div class="form-group">
 					      <label class="control-label col-sm-2" for="nombre">Nombre:</label>
 					      <div class="col-sm-4">
-					        <input name="Nombres" type="text"  class="form-control" id="nombre" ng-model="nombre_" placeholder="Ingresar Nombre" required>
+					        <input name="Nombres" type="text"  class="form-control" id="nombre" ng-model="producto.nombre" placeholder="Ingresar Nombre" required>
 					        <span style = "color:red" ng-show = "Aproducto.Nombres.$dirty && Aproducto.Nombres.$invalid">
 	                        <span ng-show = "Aproducto.Nombres.$error.required">Nombre is required.</span>
 	                     	</span>

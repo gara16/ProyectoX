@@ -18,6 +18,7 @@ class Modelo extends CI_Model{
 	function listarProducto(){
 		$datos=$this->db->select('idproducto,nombreprod,precio,stock,img')
 						->from('producto')
+						->where('estado','1')
 						->get()->result();
 		return $datos;
 	}
@@ -34,12 +35,13 @@ class Modelo extends CI_Model{
 		return $datos;
 	}
 
-	function modificarProducto($id,$producto){
+	function eliminarProducto($id){
 		$this->db->where('idproducto',$id);
-		if ($this->db->update('producto',$producto)) {
+		if ($this->db->update('estado','0')) {
 			return true;
 		} else return false;
 	}
+
 	function listartipoprod(){
 		$datos=$this->db->select('idtipoprod,tipoprod')->from('tipoproducto')->get()->result();
 		return $datos;
@@ -80,6 +82,7 @@ class Modelo extends CI_Model{
 			return true;
 		} else return false;
 	}
+
 	function listarUsuario($tipoUser){
 		$datos=$this->db->select('d.nombre','d.apellido','d.dni','d,email','d.img')
 		->from('datos d')

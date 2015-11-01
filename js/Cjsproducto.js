@@ -1,6 +1,6 @@
 var app = angular.module('SVentas',[]);
 
-app.controller('agregarP',['$scope','$http','fagregar','flistar',function($scope,$http,fagregar,flistar){
+app.controller('Producto',['$scope','$http','fagregar','flistar',function($scope,$http,fagregar,flistar){
 	
 	fagregar.flistarT().success(function(b){
 			$scope.listaT=b.lista;
@@ -35,17 +35,21 @@ app.controller('agregarP',['$scope','$http','fagregar','flistar',function($scope
 	};
 
 
-	
-	
 	$scope.modificar = function($dato){
 
 		flistar.fbuscarP($dato).success(function(a){
 			console.log(a.id)
-			$scope.nombre_=a.id;
-			console.log($scope.nombre_)
 			$scope.producto=a.lista;
 			$scope.mensaje=a.error;
 			
+		});
+		
+	};
+
+	$scope.eliminar = function($dato){
+
+		flistar.feliminarP($dato).success(function(a){
+			alert(a)
 		});
 		
 	};

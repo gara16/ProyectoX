@@ -19,10 +19,10 @@ class Cproducto extends CI_Controller{
 		$stock=$this->input->post('stock');
 		$medida=$this->input->post('idmedida');
 		$tipo=$this->input->post('idtipo');
-		$array= array('nombreprod'=>$nombre,'precio'=>$precio,'stock'=>$stock,'idmedida'=>$medida,'idtipoprod'=>$tipo);
+		$array= array('estado'=>'1','nombreprod'=>$nombre,'precio'=>$precio,'stock'=>$stock,'idmedida'=>$medida,'idtipoprod'=>$tipo);
 		return $array;
 	}
-	function agregarProducto($nombre,$precio,$stock,$medida,$tipo){
+	function agregarProducto(){
 		$array=$this->capturaDatos();
 		$flag = $this->modelo->agregarProduct($array);
 		if ($flag) {
@@ -32,6 +32,20 @@ class Cproducto extends CI_Controller{
 		}
 		echo json_encode($mensaje);
 	}
+	function eliminarProducto(){
+		$_POST=json_decode(file_get_contents('php://input'),TRUE);
+		$id=$this->input->post('idproducto');
+		$mensaje=$id;
+		/*
+		$flag = $this->modelo->eliminarProducto($id);
+		if ($flag) {
+			$mensaje="Producto Eliminado exitosamente";
+		} else{
+			$mensaje="Ocurrió un error al intentar Eliminar el producto";
+		}*/
+		echo json_encode($mensaje);
+	}
+
 	function validaciones(){
 		
 	}
