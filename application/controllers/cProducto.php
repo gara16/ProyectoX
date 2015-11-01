@@ -71,7 +71,15 @@ class Cproducto extends CI_Controller{
 		}
 		echo json_encode($valor);
 	}
-
+	function eliminarProducto(){
+		$_POST=json_decode(file_get_contents('php://input'),TRUE);
+		$id=$this->input->post('idproducto');
+		$producto=array('estado'=>'0');
+		if ($this->modelo->modificarProducto($id,$producto)) {
+			$valor['eliminar']="Producto eliminado";
+		} else $valor['error']="Ocurrio un error al eliminar producto";
+		echo json_encode($valor);
+	}
 	function buscarProducto(){
 		$_POST=json_decode(file_get_contents('php://input'),TRUE);
 		$id=$this->input->post('idproducto');
