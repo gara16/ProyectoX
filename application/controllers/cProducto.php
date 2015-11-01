@@ -12,7 +12,7 @@ class Cproducto extends CI_Controller{
 		$this->load->view('index.html');
 	}
 
-	function agregarProducto(){
+	function capturaDatos(){
 		$_POST=json_decode(file_get_contents('php://input'),TRUE);
 		$nombre=$this->input->post('nombre');
 		$precio=$this->input->post('precio');
@@ -20,6 +20,10 @@ class Cproducto extends CI_Controller{
 		$medida=$this->input->post('idmedida');
 		$tipo=$this->input->post('idtipo');
 		$array= array('nombreprod'=>$nombre,'precio'=>$precio,'stock'=>$stock,'idmedida'=>$medida,'idtipoprod'=>$tipo);
+		return $array;
+	}
+	function agregarProducto($nombre,$precio,$stock,$medida,$tipo){
+		$array=$this->capturaDatos();
 		$flag = $this->modelo->agregarProduct($array);
 		if ($flag) {
 			$mensaje['ok']="Producto registrado exitosamente";
@@ -77,7 +81,6 @@ class Cproducto extends CI_Controller{
 		}
 		echo json_encode($valor);
 	}
-
 }
 
 ?>
