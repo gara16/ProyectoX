@@ -29,15 +29,14 @@ class Modelo extends CI_Model{
 	}
 	/*la funcion modificar tambien servirá para realizar la eliminacion lógica de un producto*/
 	function buscarProducto($id){
-		$datos=$this->db->select('nombreprod,precio,stock,idmedida,idtipoprod')
+		$datos=$this->db->select('nombreprod as nombre,precio,stock,idmedida,idtipoprod as idtipo')
 						->where('idproducto',$id)
 						->from('producto')->get()->result();
 		return $datos;
 	}
-
-	function eliminarProducto($id){
+	function modificarProducto($id,$producto){
 		$this->db->where('idproducto',$id);
-		if ($this->db->update('estado','0')) {
+		if ($this->db->update('producto',$producto)) {
 			return true;
 		} else return false;
 	}

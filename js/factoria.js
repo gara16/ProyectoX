@@ -25,6 +25,9 @@ app.factory('flistar', function ($http) {
 		},
 		feliminarP:function($valor){
 			return $http.post('cproducto/eliminarProducto',JSON.stringify($valor));
+		},
+		fmodificarP:function($valor){
+			return $http.post('cproducto/modificarProducto',JSON.stringify($valor));
 		}
 	}
 });

@@ -1,7 +1,9 @@
 var app = angular.module('SVentas',[]);
 
 app.controller('Producto',['$scope','$http','fagregar','flistar',function($scope,$http,fagregar,flistar){
-	
+	$scope.producto={};
+	$scope.flag=true;
+	$scope.id="";
 	fagregar.flistarT().success(function(b){
 			$scope.listaT=b.lista;
 			$scope.mensaje=b.error;
@@ -18,14 +20,24 @@ app.controller('Producto',['$scope','$http','fagregar','flistar',function($scope
 	});
 
 
-	$scope.submit = function(){
-		
-		fagregar.fagregarP($scope.producto).success(function(a){
-			$scope.mensajeok=a.ok;
-			$scope.mensajeerror=a.error;
-		}).error(function(b) {
-			alert(b);
-		});
+	$scope.submit = function(id){
+		if ($scope.flag) {
+			fagregar.fagregarP($scope.producto).success(function(a){
+			alert(a)
+			}).error(function(b) {
+				alert(b);
+			});
+
+		}else{
+			$scope.producto[0]=$scope.id;
+			console.log($scope.producto)
+			flistar.fmodificarP($scope.producto).success(function(a){
+			alert(a)
+			}).error(function(b) {
+				alert(b);
+			});
+		};
+			
 	};
 
 	$scope.reset = function(){		
@@ -36,12 +48,12 @@ app.controller('Producto',['$scope','$http','fagregar','flistar',function($scope
 
 
 	$scope.modificar = function($dato){
-
+		$scope.flag=false;
 		flistar.fbuscarP($dato).success(function(a){
-			console.log(a.id)
-			$scope.producto=a.lista;
+			$scope.producto=a.lista[0];
 			$scope.mensaje=a.error;
-			
+			$scope.id=$dato.idproducto;
+
 		});
 		
 	};

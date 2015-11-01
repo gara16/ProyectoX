@@ -3,17 +3,21 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>AngularJS</title>
+        <title>Sistema de Ventas Online</title>
         <meta name="viewport" content="width=device-width">
         <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
         <!-- Optional theme -->
-        <link rel="stylesheet" href="bootstrap-theme.css">
-       
+        <link rel="stylesheet" href="css/bootstrap-theme.css">
+               
+        <link rel="stylesheet" href="fonts/glyphicons-halflings-regular.ttf">
+        <link rel="stylesheet" href="fonts/glyphicons-halflings-regular.woff">
+        <link rel="stylesheet" href="fonts/glyphicons-halflings-regular.woff2">
         
-        <script src="jquery.min.js"></script>
-		<script src="angular.min.js"></script>		
-		<script src="angular-route.min.js"></script>	
+        
+        <script src="js/jquery.min.js"></script>
+		<script src="js/angular.min.js"></script>		
+		<script src="js/angular-route.min.js"></script>	
 		<script src="js/Cjsproducto.js"></script>
 		<script src="js/factoria.js"></script>
 			
@@ -39,10 +43,6 @@
          	<div  class="container" ng-controller="Producto" >
 				
 					<h1>Ingresar Nuevo Producto</h1>
-						
-					<h1 ><font color="red">{{mensajeok}}</font></h1>
-					<h1 ><font color="red">{{mensajeerror}}</font></h1>
-
 					<form class="form-horizontal" role="form" name="Aproducto"  novalidate>
 						
 						<div class="form-group">
@@ -58,7 +58,7 @@
 					    <div class="form-group">
 					      <label class="control-label col-sm-2" for="Precio">Precio:</label>
 					      <div class="col-sm-4">
-					        <input name="Precios" type="number"  class="form-control" id="precio" ng-model="producto.precio" placeholder="Ingresar Precio 00.0" required>
+					        <input name="Precios" type="text"  class="form-control" id="precio" ng-model="producto.precio" placeholder="Ingresar Precio 00.0" required>
 					        <span style = "color:red" ng-show = "Aproducto.Precios.$dirty && Aproducto.Precios.$invalid">
 	                        <span ng-show = "Aproducto.Precios.$error.required">Precio is required.</span>
 	                     	</span>
@@ -68,7 +68,7 @@
 					    <div class="form-group">
 					      <label class="control-label col-sm-2" for="Stock">Stock:</label>
 					      <div class="col-sm-4">
-					        <input name="Stocks" type="number"  class="form-control" id="stock" ng-model="producto.stock" placeholder="Ingresar stock kilo,litro,unidad" required>
+					        <input name="Stocks" type="text"  class="form-control" id="stock" ng-model="producto.stock" placeholder="Ingresar stock kilo,litro,unidad" required>
 							<span style = "color:red" ng-show = "Aproducto.Stocks.$dirty && Aproducto.Stocks.$invalid">
 	                        <span ng-show = "Aproducto.Stocks.$error.required">Stock is required.</span>
 	                     	</span>
@@ -98,12 +98,12 @@
 					    				
 						    <div class="form-group">        
 						      <div class="col-sm-offset-2 col-sm-10">
-						        <button class="btn btn-default btn-primary" type="button" ng-click="reset()">Reset </button>
+						        <button class="btn btn-default btn-primary" type="button" ng-click="reset()"><span class="glyphicon glyphicon-repeat"></span>Reset </button>
 								<button class="btn btn-default btn-primary"  ng-disabled = "Aproducto.Nombres.$dirty &&
 		                        Aproducto.Nombres.$invalid || Aproducto.Precios.$dirty &&
 		                        Aproducto.Precios.$invalid || Aproducto.Medidas.$dirty &&
 		                        Aproducto.Medidas.$invalid || Aproducto.Tipos.$dirty &&
-		                        Aproducto.Tipos.$invalid" ng-click="submit()">Enviar</button>
+		                        Aproducto.Tipos.$invalid" ng-click="submit()"><span class="glyphicon glyphicon-floppy-saved"></span>Guardar Datos</button>
 						      </div>
 						    </div>
 					</form>
@@ -132,10 +132,10 @@
 										<img src="Imagenes/meme.jpg" width="70" height="70">
 								</td>
 								<td style="text-align: center;">		
-										<button type="button" class="btn btn-primary"  ng-click="modificar(list)">Modificar</button>
+										<button type="button" class="btn btn-primary"  ng-click="modificar(list)"><span class="glyphicon glyphicon-pencil"></span>Modificar</button>
 								</td>
 								<td style="text-align: center;">
-										<button type="button" class="btn btn-danger"  ng-click="eliminar(list)">Eliminar</button>
+										<a type="button" class="btn btn-danger"  ng-click="eliminar(list)"><span class="glyphicon glyphicon-remove"></span>Eliminar</a>
 
 								</td>
 							</tr>	

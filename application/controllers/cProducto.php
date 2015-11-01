@@ -26,26 +26,13 @@ class Cproducto extends CI_Controller{
 		$array=$this->capturaDatos();
 		$flag = $this->modelo->agregarProduct($array);
 		if ($flag) {
-			$mensaje['ok']="Producto registrado exitosamente";
+			$mensaje="Producto registrado exitosamente";
 		} else{
-			$mensaje['error']="Ocurrió un error al intentar registrar el producto";
+			$mensaje="Ocurrió un error al intentar registrar el producto";
 		}
 		echo json_encode($mensaje);
 	}
-	function eliminarProducto(){
-		$_POST=json_decode(file_get_contents('php://input'),TRUE);
-		$id=$this->input->post('idproducto');
-		$mensaje=$id;
-		/*
-		$flag = $this->modelo->eliminarProducto($id);
-		if ($flag) {
-			$mensaje="Producto Eliminado exitosamente";
-		} else{
-			$mensaje="Ocurrió un error al intentar Eliminar el producto";
-		}*/
-		echo json_encode($mensaje);
-	}
-
+	
 	function validaciones(){
 		
 	}
@@ -85,13 +72,22 @@ class Cproducto extends CI_Controller{
 		}
 		echo json_encode($valor);
 	}
+	function modificarProducto(){
+		$_POST=json_decode(file_get_contents('php://input'),TRUE);
+		$id=$this->input->post('0');
+		$producto=$this->capturaDatos();
+		if ($this->modelo->modificarProducto($id,$producto)) {
+			$valor="Producto modificado";
+		} else $valor="Ocurrio un error al modificado producto";
+		echo json_encode($valor);
+	}
 	function eliminarProducto(){
 		$_POST=json_decode(file_get_contents('php://input'),TRUE);
 		$id=$this->input->post('idproducto');
 		$producto=array('estado'=>'0');
 		if ($this->modelo->modificarProducto($id,$producto)) {
-			$valor['eliminar']="Producto eliminado";
-		} else $valor['error']="Ocurrio un error al eliminar producto";
+			$valor="Producto eliminado";
+		} else $valor="Ocurrio un error al eliminar producto";
 		echo json_encode($valor);
 	}
 	function buscarProducto(){
