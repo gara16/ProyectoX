@@ -1,0 +1,123 @@
+<div  class="container" ng-controller="Producto" >	
+	<nav class="navbar navbar-fixed-top navbar-inverse">
+	            
+		<div class="container">
+		                
+		    <div class="navbar-brand">
+		         Sistema De Ventas :D
+		    </div>
+		    <div class="collapse navbar-collapse navHeaderCollapse">
+			    <ul class=" nav navbar-nav navbar-right">
+			         <li><a class="btn btn-link" type="button" ng-click="inicio()">
+			              <span class="glyphicon glyphicon-home"></span> Inicio </a></li>
+			    </ul>
+		    </div>
+		                             
+		</div>
+	</nav>
+	           
+	<div class="jumbotron">
+	    <h2>Transaccion Productos</h2>
+	</div>
+         	
+        
+	<h1>Ingresar Nuevo Producto</h1>
+	<form class="form-horizontal" role="form" name="Aproducto"  novalidate>
+		
+		<div class="form-group">
+	      <label class="control-label col-sm-2" for="nombre">Nombre:</label>
+	      <div class="col-sm-4">
+	        <input name="Nombres" type="text"  class="form-control" id="nombre" ng-model="producto.nombre" placeholder="Ingresar Nombre" required>
+	        <span style = "color:red" ng-show = "Aproducto.Nombres.$dirty && Aproducto.Nombres.$invalid">
+            <span ng-show = "Aproducto.Nombres.$error.required">Nombre is required.</span>
+         	</span>
+         </div>
+	    </div>
+
+	    <div class="form-group">
+	      <label class="control-label col-sm-2" for="Precio">Precio:</label>
+	      <div class="col-sm-4">
+	        <input name="Precios" type="text"  class="form-control" id="precio" ng-model="producto.precio" placeholder="Ingresar Precio 00.0" required>
+	        <span style = "color:red" ng-show = "Aproducto.Precios.$dirty && Aproducto.Precios.$invalid">
+            <span ng-show = "Aproducto.Precios.$error.required">Precio is required.</span>
+         	</span>
+	      </div>
+	    </div>
+
+	    <div class="form-group">
+	      <label class="control-label col-sm-2" for="Stock">Stock:</label>
+	      <div class="col-sm-4">
+	        <input name="Stocks" type="text"  class="form-control" id="stock" ng-model="producto.stock" placeholder="Ingresar stock kilo,litro,unidad" required>
+			<span style = "color:red" ng-show = "Aproducto.Stocks.$dirty && Aproducto.Stocks.$invalid">
+            <span ng-show = "Aproducto.Stocks.$error.required">Stock is required.</span>
+         	</span>
+	      </div>
+	    </div>
+
+	    <div class="form-group">
+	      <label class="control-label col-sm-2" for="Idmedida">IDMEDIDA:</label>
+	      <div class="col-sm-4">
+	        <select name="Medidas" class="form-control" id="idmedida" ng-options="c.idmedida as c.medida for c in listaM" ng-model="producto.idmedida"  required></select>
+			<span style = "color:red" ng-show = "Aproducto.Medidas.$dirty && Aproducto.Medidas.$invalid">
+            <span ng-show = "Aproducto.Medidas.$error.required">Medida is required.</span>
+         	</span>
+	      </div>
+	    </div>
+
+	    <div class="form-group">
+	      <label class="control-label col-sm-2" for="IDTIPO">IDTIPO:</label>
+	      <div class="col-sm-4">
+	        <select name="Tipos" class="form-control" id="idtipo" ng-options="b.idtipoprod as b.tipoprod for b in listaT" ng-model="producto.idtipo"  required></select>
+	        <span style = "color:red" ng-show = "Aproducto.Tipos.$dirty && Aproducto.Tipos.$invalid">
+            <span ng-show = "Aproducto.Tipos.$error.required">Tipo is required.</span>
+         	</span>
+	      </div>
+	    </div>
+
+	    				
+		    <div class="form-group">        
+		      <div class="col-sm-offset-2 col-sm-10">
+		        <button class="btn btn-default btn-primary" type="button" ng-click="reset()"><span class="glyphicon glyphicon-repeat"></span>Reset </button>
+				<button class="btn btn-default btn-primary"  ng-disabled = "Aproducto.Nombres.$dirty &&
+                Aproducto.Nombres.$invalid || Aproducto.Precios.$dirty &&
+                Aproducto.Precios.$invalid || Aproducto.Medidas.$dirty &&
+                Aproducto.Medidas.$invalid || Aproducto.Tipos.$dirty &&
+                Aproducto.Tipos.$invalid" ng-click="submit()"><span class="glyphicon glyphicon-floppy-saved"></span>Guardar Datos</button>
+		      </div>
+		    </div>
+	</form>
+	
+				
+	<div class="table-responsive">
+		<div class="form-group">
+		     <div class="col-sm-4">
+		     	<h1>Lista de Productos</h1>
+		        <input type="search"  class="form-control" ng-model="busqueda"   placeholder="Buscar Producto"><br>
+		     </div>
+		</div>
+		<table ata-toggle="table" class="table table-bordered table-striped table-hover m-tabla tabla-web" fixed-tabla>
+			<tr >
+				<td style="text-align: center;">Nombre Producto </td>
+				<td style="text-align: center;">Precio Producto </td>
+				<td style="text-align: center;">Stock Producto </td>
+				<td style="text-align: center;" colspan="3">Operaciones</td>
+				
+			</tr>	
+			<tr   ng-repeat="list in listaP | filter: busqueda">
+				<td style="text-align: center;">{{list.nombreprod}}</td>
+				<td style="text-align: center;">{{list.precio |currency: $}}</td>
+				<td style="text-align: center;">{{list.stock}}</td>
+				<td style="text-align: center;">
+						<img src="Imagenes/meme.jpg" width="70" height="70">
+				</td>
+				<td style="text-align: center;">		
+						<button type="button" class="btn btn-primary"  ng-click="modificar(list)"><span class="glyphicon glyphicon-pencil"></span>Modificar</button>
+				</td>
+				<td style="text-align: center;">
+						<a type="button" class="btn btn-danger"  ng-click="eliminar(list)"><span class="glyphicon glyphicon-remove"></span>Eliminar</a>
+
+				</td>
+			</tr>	
+	    </table>	
+	</div>
+</div>
