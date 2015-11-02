@@ -1,6 +1,6 @@
-var app = angular.module('SVentas',[]);
+var app = angular.module('SVentas');
 
-app.controller('Producto',['$scope','$http','fagregar','flistar',function($scope,$http,fagregar,flistar){
+app.controller('Producto',['$scope','$http','$location','fagregar','flistar',function($scope,$http,$location,fagregar,flistar){
 	$scope.producto={};
 	$scope.flag=true;
 	$scope.id="";
@@ -67,8 +67,11 @@ app.controller('Producto',['$scope','$http','fagregar','flistar',function($scope
 		
 	};
 
-	
+	$scope.inicio=function(){
+		$location.path('/');
+	};
 
 			
 }]);
+
 

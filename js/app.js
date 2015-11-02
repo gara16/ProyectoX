@@ -1,13 +1,14 @@
-var app = angular.module('mainApp',['ngRoute']);
+var app = angular.module('SVentas',['ngRoute']);
 
 app.config(function($routeProvider){
 	$routeProvider
 	.when('/', {
-		templateUrl: 'template/login.html',
-		controller: 'loginCtrl'
+		templateUrl: 'template/Login.html',
+		controller: 'Clogeo'
 	})
-	.when('/Welcome', {
-		templateUrl: 'template/Welcome.html'
+	.when('/Vproducto', {
+		templateUrl: 'template/Vproducto.html',
+		controller: 'Producto'
 	})
 	.otherwise({
 		redirectTo: '/'
