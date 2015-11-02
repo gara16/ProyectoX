@@ -2,17 +2,36 @@
 	<nav class="navbar navbar-fixed-top navbar-inverse">
 		            
 			<div class="container">
-			                
+			     
+			     <div class="navbar-brand navbar-left">
+		    		<img src="Imagenes/icono.ico" width="70" height="70">
+		         
+		    	</div>             
 			    <div class="navbar-brand">
 			         Sistema De Ventas Bienvenido/Sales system Welcome :D
 			    </div>
 			    <div class="collapse navbar-collapse navHeaderCollapse">
 				    <ul class=" nav navbar-nav navbar-right">
-				         <li><a  class="btn btn-link" type="button" ng-click="menu()">
-				              <span class="glyphicon glyphicon-home"></span> Menú </a></li>
+				    	<li>
+						    <div class="pull-right">
+					        <form class="navbar-form" role="form">
+					        <div class="input-group">
+					            <input type="text" class="form-control" placeholder="Usuario" ng-model="login.user">
+					        </div>
+					        <div class="input-group">
+					            <input type="text" class="form-control" placeholder="Password" ng-model="login.pass">
+					        </div>
+				    	</li>
+				    	<li><a type="button" class="btn btn-link" ng-click="menu()"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+
 				    </ul>
-			    </div>
-			    <h1><center><font color="white">LOGIN</font></center></h1>                         
+				    
+			    </div> 
+
 			</div>
 	</nav>
+	<div class="jumbotron">
+
+	</div>
+	
 </div>
