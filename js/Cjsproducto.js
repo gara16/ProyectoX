@@ -4,6 +4,7 @@ app.controller('Producto',['$scope','$http','fagregar','flistar',function($scope
 	$scope.producto={};
 	$scope.flag=true;
 	$scope.id="";
+	
 	fagregar.flistarT().success(function(b){
 			$scope.listaT=b.lista;
 			$scope.mensaje=b.error;
