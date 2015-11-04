@@ -31,3 +31,8 @@ app.factory('flistar', function ($http) {
 		}
 	}
 });
+app.factory('flogin', function ($http) {
+	return {
+		
+	}
+});
