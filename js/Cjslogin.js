@@ -1,7 +1,9 @@
-app.controller('Clogeo',['$scope','$location','$http',function($scope,$location,$http){
+var app = angular.module('SVentas');
+
+app.controller('Clogeo',['$scope','$location','$http','fresg',function($scope,$location,$http,fresg){
 	$scope.flag=true;
 	$scope.datos={};
-	$scope.usuario={};
+	
 	$scope.logear=function(){
 		
 		if ($scope.login!=null) {
@@ -21,28 +23,28 @@ app.controller('Clogeo',['$scope','$location','$http',function($scope,$location,
 	$scope.btnregistro=function(){
 		if ($scope.registro!=null) {
 			$scope.flag=false;
-			$scope.datos=$scope.registro;
-			console.log($scope.datos)
+			
 		}else alert("No Existen datos");
 			
 	};
 	$scope.btnregistrar=function(){
 		$scope.flag=true;
-		$scope.usuario=$scope.registrar;
-		console.log($scope.usuario)
-		flogin.fdatos($scope.datos).success(function(a){
-			alert(a)
+		$scope.datos=$scope.registro;
+		console.log("datos de registro")
+		console.log($scope.registro)
+		
+		
+		fresg.fdatos($scope.datos).success(function(a){
+			alert(a);
 			}).error(function(b) {
 				alert(b);
 			});
-		flogin.fusuario($scope.usuario).success(function(a){
-			alert(a)
-			}).error(function(b) {
-				alert(b);
-			});
-	}
+		
+			
+	};
+
 	$scope.btnreset=function(){
 		$scope.registro=null;
-	}
+	};
 
 }]);

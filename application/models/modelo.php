@@ -65,21 +65,29 @@ class Modelo extends CI_Model{
 
 	/*Las funciones a continuación tienen por objetivo realizar operaciones en cuento a la entidad usuario
 	y otras entidades con las que se relaciona como son datos, tipousuario*/
-	function existeUsuario($usuario){
-		$dato=$this->db->select('idusuario')->where('usuario',$usuario)
-			->from('usuario')->get()->result();
+	function existeDatos($valor){
+		$dato=$this->db->select('iddatos')->where('dni',$valor)
+			->from('datos')->get()->result();
 		return $dato;
 	}
+
 	function agregarUsuario($usuario){
 		if ($this->db->insert('usuario',$usuario)) {
-			return $this->existeUsuario($usuario['usuario']);
-		} else return null;
-	}
-	function agregarDatos($datos){
-		if ($this->db->insert('datos',$datos)) {
 			return true;
 		} else return false;
 	}
+	function agregarDatos($datos){
+		if ($this->db->insert('datos',$datos)) {
+			return $this-> existeDatos($datos['dni']);
+		} else return null;
+	}
+
+	function eliminarDatos($valor){
+		if ($this->db->insert('datos',$datos)) {
+			return $this-> existeDatos($datos['dni']);
+		} else return null;
+	}
+
 	function modificarUsuario($idUsuario,$usuario){
 		$this->db->where('idusuario',$idUsuario);
 		if ($this->db->update('usuario',$usuario)) {

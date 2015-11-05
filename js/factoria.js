@@ -31,8 +31,13 @@ app.factory('flistar', function ($http) {
 		}
 	}
 });
-app.factory('flogin', function ($http) {
+app.factory('fresg', function ($http) {
 	return {
+		factusuario:function(valor){
+			return $http.post('index.php/cusuario/agregarUsuario',JSON.stringify(valor));
+		},
+		
+
 		
 	}
 });
