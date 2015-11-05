@@ -65,29 +65,21 @@ class Modelo extends CI_Model{
 
 	/*Las funciones a continuación tienen por objetivo realizar operaciones en cuento a la entidad usuario
 	y otras entidades con las que se relaciona como son datos, tipousuario*/
-	function existeDatos($valor){
-		$dato=$this->db->select('iddatos')->where('dni',$valor)
-			->from('datos')->get()->result();
+	function existeUsuario($usuario){
+		$dato=$this->db->select('idusuario')->where('usuario',$usuario)
+			->from('usuario')->get()->result();
 		return $dato;
 	}
-
 	function agregarUsuario($usuario){
 		if ($this->db->insert('usuario',$usuario)) {
-			return true;
-		} else return false;
+			return $this->existeUsuario($usuario['usuario']);
+		} else return null;
 	}
 	function agregarDatos($datos){
 		if ($this->db->insert('datos',$datos)) {
-			return $this-> existeDatos($datos['dni']);
-		} else return null;
+			return true;
+		} else return false;
 	}
-
-	function eliminarDatos($valor){
-		$this->db->delete('datos', array('dni' => $valor));
-			
-		
-	}
-
 	function modificarUsuario($idUsuario,$usuario){
 		$this->db->where('idusuario',$idUsuario);
 		if ($this->db->update('usuario',$usuario)) {
@@ -112,19 +104,24 @@ class Modelo extends CI_Model{
 			return true;
 		} else return false;
 	}
+	function agregarProveedor($proveedor){
+		if ($this->db->insert('proveedor',$proveedor)) {
+			return true;
+		} else return false;
+	}
 	function listarProveedor(){
 		$datos=$this->db->select('nombre,apellidocompañia,img')
 		->from('proveedor')->get()->result();
 		return $datos;
 	}
-	function listarProveedorPorId($idProveedor){
-		$datos=$this->db->select('nombre,apellido,direccion,compañia,fono,dni,ruc,img')
+	function buscarProveedor($idProveedor){
+		$dato=$this->db->select('nombre,apellido,direccion,compañia,fono,dni,ruc,img')
 		->where('idproveedor',$idProveedor)->get()->result();
-		return $datos;
+		return $dato;
 	}
-	function modificarProveedor($idProveedor){
+	function modificarProveedor($idProveedor,$proveedor){
 		$this->db->where('idproveedor',$idProveedor);
-		if ($this->db->update('proveedor',$idProveedor)) {
+		if ($this->db->update('proveedor',$proveedor)) {
 			return true;
 		} else return false;
 	}
