@@ -32,7 +32,7 @@
 		<div class="form-group">
 	      <label class="control-label col-sm-2" for="nombre">Nombre:</label>
 	      <div class="col-sm-4">
-	        <input name="Nombres" type="text"  class="form-control" id="nombre" ng-model="producto.nombre" placeholder="Ingresar Nombre" required>
+	        <input name="Nombres" type="text"  class="form-control" id="nombre" ng-model="producto.nombre" placeholder="Ingresar Nombre" maxlength ="20" required>
 	        <span style = "color:red" ng-show = "Aproducto.Nombres.$dirty && Aproducto.Nombres.$invalid">
             <span ng-show = "Aproducto.Nombres.$error.required">Nombre is required.</span>
          	</span>

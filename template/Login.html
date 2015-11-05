@@ -14,16 +14,17 @@
 				    <ul class=" nav navbar-nav navbar-right">
 				    	<li>
 						    <div class="pull-right">
-					        <form name="Flogeo" class="navbar-form" role="form" novalidate>
-					        <div class="input-group">
-					            <input name="USER" type="text" class="form-control" placeholder="Usuario" ng-model="login.user">
-					        </div>
-					        <div class="input-group">
-					            <input name="PASS" type="password" class="form-control" placeholder="Password" ng-model="login.pass">
-					        </div>
+    					        <form name="Flogeo" class="navbar-form" role="form" novalidate>
+        					        <div class="input-group">
+        					            <input name="USER" type="text" class="form-control" placeholder="Usuario" ng-model="login.user">
+        					        </div>
+        					        <div class="input-group">
+        					            <input name="PASS" type="password" class="form-control" placeholder="Password" ng-model="login.pass">
+        					        </div>
+                                </form>
+                            </div>
 				    	</li>
-				    	<li><a type="button" class="btn btn-link" ng-disable = "Flogeo.USER.$pristine &&
-                			Flogeo.USER.$invalid || Flogeo.PASS.$pristine &&  Flogeo.PASS.$invalid" ng-click="menu()"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+				    	<li><a type="button" class="btn btn-link" ng-click="logear()"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
 
 				    </ul>
 				    
@@ -59,16 +60,54 @@
 
                 <div class="col-md-4" ng-show="flag">    
                     <div class="row">   
-                        <div class="col-md-12" id="login">
-                            <div id="tit">¿No tienes una cuenta?</div>
-                            <p><h1>Registrate </h1></p>
-                            <form method="get" class="form-horizontal" role="form" name="Fregistrar">
-                                <input name="Nombres" type="text" id="nombre" class="form-control " placeholder="Nombre" ng-model="registro.nombre" maxlength ="20" ><br>
-                                <input name="Apellidos" type="text" id="apellido" class="form-control" placeholder="Apellido" ng-model="registro.apellido" maxlength ="40" ><br>
-                                <input name="Dnis" type="number" id="dni" class="form-control" placeholder="Dni" ng-model="registro.dni" max="99999999"><br>
-                                <input  name="Emails" type="email" id="email" class="form-control" placeholder="Email" ng-model="registro.email" maxlength ="30" ><br>
-                                <input  name="Teles" type="number" id="telefono" class="form-control" placeholder="Telefono" ng-model="registro.telefono" min="999999" max ="999999999999999"><br>
-                                <button  class="btn btn-lg btn-primary " ng-click="registro()">Ingresar</button>
+                        <div class="col-md-12">
+                            <div>¿No tienes una cuenta?<br><h1>Registrate</h1></div>
+                            
+                            <form  class="form-horizontal" role="form" name="FRegistro" novalidate>
+                                <div class="form-group">
+                                    <div>
+                                        <input name="Rnombre" type="text" id="nombre" class="form-control " placeholder="Nombre" ng-model="registro.nombre" maxlength ="20" required>
+                                        <span style = "color:red" ng-show = "FRegistro.Rnombre.$dirty && FRegistro.Rnombre.$invalid">
+                                        <span ng-show = "FRegistro.Rnombre.$error.required">Nombre is required.</span></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div>
+                                        <input name="Apellidos" type="text" id="apellido" class="form-control" placeholder="Apellido" ng-model="registro.apellido" maxlength ="40" required>
+                                        <span style = "color:red" ng-show = "FRegistro.Apellidos.$dirty && FRegistro.Apellidos.$invalid">
+                                        <span ng-show = "FRegistro.Apellidos.$error.required">Apellido is required.</span></span>
+                                    
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div>
+                                        <input name="Dnis" type="number" id="dni" class="form-control" placeholder="Dni" ng-model="registro.dni" min="9999999" max="99999999" required>
+                                        <span style = "color:red" ng-show = "FRegistro.Dnis.$dirty && FRegistro.Dnis.$invalid">
+                                        <span ng-show = "FRegistro.Dnis.$error.required">Dni is required.</span></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div>
+                                       <input  name="Emails" type="email" id="email" class="form-control" placeholder="Email: example@email.com" ng-model="registro.email" maxlength ="30" required> 
+                                       <span style = "color:red" ng-show = "FRegistro.Emails.$dirty && FRegistro.Emails.$invalid">
+                                        <span ng-show = "FRegistro.Emails.$error.required">Email is required.</span></span>
+
+                                    </div>
+                                </div>  
+
+                                <div class="form-group">
+                                    <div>
+                                       <input  name="Teles" type="number" id="telefono" class="form-control" placeholder="Telefono min 9 digitos max 15" ng-model="registro.telefono" min="999999" max ="999999999999999" required> 
+                                       <span style = "color:red" ng-show = "FRegistro.Teles.$dirty && FRegistro.Teles.$invalid">
+                                        <span ng-show = "FRegistro.Teles.$error.required">Telefono is required.</span></span>
+
+                                    </div>
+                                </div> 
+                                                               
+                                <button  class="btn btn-lg btn-primary " ng-click="btnreset()">Reset</button>
+                                <button  class="btn btn-lg btn-primary " ng-click="btnregistro()">Ingresar</button>
                             </form>
                             
                         </div>
@@ -81,9 +120,9 @@
                             <div id="tit">falta poco para terminar</div>
                             <p><h1>Crear Usuario </h1></p>
                             <form method="get" class="form-horizontal" role="form" name="Fregistrar">
-                                <input name="Usuario" type="text" id="usuario" class="form-control " placeholder="Usuario" ng-model="registro.user" maxlength ="10" ><br>
-                                <input name="Password" type="password" id="password" class="form-control" placeholder="Password" ng-model="registro.pass" maxlength ="10" ><br>
-                                <button  class="btn btn-lg btn-primary " ng-click="registrar()">Registrar</button>
+                                <input name="Usuario" type="text" id="usuario" class="form-control " placeholder="Usuario" ng-model="registrar.user" maxlength ="10" ><br>
+                                <input name="Password" type="password" id="password" class="form-control" placeholder="Password" ng-model="registrar.pass" maxlength ="10" ><br>
+                                <button  class="btn btn-lg btn-primary " ng-click="btnregistrar()">Registrar</button>
                             </form>
                             
                         </div>

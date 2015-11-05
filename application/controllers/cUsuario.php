@@ -16,8 +16,9 @@ class CUsuario extends CI_Controller{
 		$apellido=$this->input->post('apellido');
 		$dni=$this->input->post('dni');
 		$email=$this->input->post('email');
-		$usuario=$this->input->post('usuario');
-		$password=$this->input->post('password');
+		$telefono=$this->input->post('telefono');
+		$usuario=$this->input->post('user');
+		$password=$this->input->post('pass');
 		$Adatos=array('nombre'=>$nombre,'apellido'=>$apellido,'dni'=>$dni,'email'=>$email);
 		$Ausuario=array('usuario'=>$usuario,'password'=>$password);
 		$datos=$this->modelo->agregarUsuario($Adatos);
