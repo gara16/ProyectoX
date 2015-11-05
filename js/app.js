@@ -4,7 +4,7 @@ app.config(function($routeProvider){
 	$routeProvider
 	.when('/', {
 		templateUrl: 'template/Login.html',
-		controller: 'Clogeo'
+		controller: 'Ctrlogeo'
 	})
 	.when('/Vproducto', {
 		templateUrl: 'template/Vproducto.html',
@@ -12,7 +12,7 @@ app.config(function($routeProvider){
 	})
 	.when('/Vventas', {
 		templateUrl: 'template/Vventas.html',
-		controller: 'Clogeo'
+		controller: 'Ctrlogeo'
 	})
 	.otherwise({
 		redirectTo: '/'

@@ -3,13 +3,13 @@ var app = angular.module('SVentas');
 app.factory('fagregar', function ($http) {
 	return {
 		flistarT:function(){
-			return $http.get('index.php/cproducto/listarTipo');
+			return $http.get('cproducto/listarTipo');
 		},
 		flistarM:function(){
-			return $http.get('index.php/cproducto/listarMedida');
+			return $http.get('cproducto/listarMedida');
 		},
 		fagregarP:function($valor){
-			return $http.post('index.php/cproducto/agregarProducto',JSON.stringify($valor));
+			return $http.post('cproducto/agregarProducto',JSON.stringify($valor));
 		}
 		
 	};
@@ -18,16 +18,16 @@ app.factory('fagregar', function ($http) {
 app.factory('flistar', function ($http) {
 	return {
 		flistarP:function(){
-			return $http.get('index.php/cproducto/listarProducto');
+			return $http.get('cproducto/listarProducto');
 		},
 		fbuscarP:function($valor){
-			return $http.post('index.php/cproducto/buscarProducto',JSON.stringify($valor));
+			return $http.post('cproducto/buscarProducto',JSON.stringify($valor));
 		},
 		feliminarP:function($valor){
-			return $http.post('index.php/cproducto/eliminarProducto',JSON.stringify($valor));
+			return $http.post('cproducto/eliminarProducto',JSON.stringify($valor));
 		},
 		fmodificarP:function($valor){
-			return $http.post('index.php/cproducto/modificarProducto',JSON.stringify($valor));
+			return $http.post('cproducto/modificarProducto',JSON.stringify($valor));
 		}
 	}
 });
@@ -35,10 +35,7 @@ app.factory('fresg', function ($http) {
 	return {
 
 		factusuario:function(valor){
-			return $http.post('index.php/cusuario/agregarUsuario',JSON.stringify(valor));
-		},
-		factlogeo:function(valor){
-			return $http.post('index.php/cusuario/agregarUsuario',JSON.stringify(valor));
-		}		
+			return $http.post('clogin/agregarUsuario',JSON.stringify(valor));
+		}	
 	}
 });

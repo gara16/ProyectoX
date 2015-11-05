@@ -12,7 +12,7 @@ class Clogin extends CI_Controller{
 	}
 
 	function index(){
-		$this->load->view('logueo.html');
+		$this->load->view('index.html');
 	}
 	function validarDatosLogueo(){
 		$this->form_validation->set_rules('usuario', 'Usuario', 'trim|required|max_length[15]|xss_clean');
@@ -62,8 +62,9 @@ class Clogin extends CI_Controller{
 		$apellido=$this->input->post('apellido');
 		$dni=$this->input->post('dni');
 		$email=$this->input->post('email');
-		$usuario=$this->input->post('usuario');
-		$password=$this->input->post('password');
+		$tele=$this->input->post('telefono');
+		$usuario=$this->input->post('user');
+		$password=$this->input->post('pass');
 		$this->validarDatosUser();
 		if($this->form_validation->run()!=FALSE){
 			if ($this->modelo->existeUsuario($usuario)==null) {
@@ -71,7 +72,7 @@ class Clogin extends CI_Controller{
 				$iduser=$this->modelo->agregarUsuario($Ausuario);
 				if ($iduser!=null) {
 					settype($iduser["0"], "array");
-					$Adatos=array('nombre'=>$nombre,'apellido'=>$apellido,'dni'=>$dni,'email'=>$email,'idusuario'=>$iduser["0"]["idusuario"]);
+					$Adatos=array('nombre'=>$nombre,'apellido'=>$apellido,'dni'=>$dni,'email'=>$email,'telefono'=>$tele,'idusuario'=>$iduser["0"]["idusuario"]);
 					if ($this->modelo->agregarDatos($Adatos)) {
 							$this->validarLogueo($usuario,$password);
 						//return json_encode(array("respuesta"=>"El Usuario y los datos fue registrado con éxito"));
