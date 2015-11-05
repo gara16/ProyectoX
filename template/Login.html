@@ -83,7 +83,7 @@
 
                                 <div class="form-group">
                                     <div>
-                                        <input name="Dnis" type="number" id="dni" class="form-control" placeholder="Dni" ng-model="registro.dni" max="99999999" required>
+                                        <input name="Dnis" type="number" id="dni" class="form-control" placeholder="Dni" ng-model="registro.dni" min="9999999" max="99999999" required>
                                         <span style = "color:red" ng-show = "FRegistro.Dnis.$dirty && FRegistro.Dnis.$invalid">
                                         <span ng-show = "FRegistro.Dnis.$error.required">Dni is required.</span></span>
                                     </div>
