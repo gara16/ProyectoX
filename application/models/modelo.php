@@ -83,9 +83,9 @@ class Modelo extends CI_Model{
 	}
 
 	function eliminarDatos($valor){
-		if ($this->db->insert('datos',$datos)) {
-			return $this-> existeDatos($datos['dni']);
-		} else return null;
+		$this->db->delete('datos', array('dni' => $valor));
+			
+		
 	}
 
 	function modificarUsuario($idUsuario,$usuario){

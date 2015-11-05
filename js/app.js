@@ -10,6 +10,10 @@ app.config(function($routeProvider){
 		templateUrl: 'template/Vproducto.html',
 		controller: 'Producto'
 	})
+	.when('/Vventas', {
+		templateUrl: 'template/Vventas.html',
+		controller: 'Clogeo'
+	})
 	.otherwise({
 		redirectTo: '/'
 	});

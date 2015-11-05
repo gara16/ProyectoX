@@ -34,12 +34,13 @@ app.controller('Clogeo',['$scope','$location','$http','fresg',function($scope,$l
 		console.log($scope.registro)
 		
 		
-		fresg.fdatos($scope.datos).success(function(a){
+		fresg.factusuario($scope.datos).success(function(a){
 			alert(a);
+			console.log(a)
 			}).error(function(b) {
 				alert(b);
 			});
-		
+		$location.path('/Vventas');
 			
 	};
 
