@@ -22,7 +22,9 @@ app.controller('Clogeo',['$scope','$location','$http','fresg',function($scope,$l
 	};
 	$scope.btnregistro=function(){
 		if ($scope.registro!=null) {
-			$scope.flag=false;
+			if ($scope.registro['nombre'] &&  $scope.registro['apellido'] &&  $scope.registro['dni'] &&  $scope.registro['email']){
+				$scope.flag=false;
+			}else alert("faltan datos");
 			
 		}else alert("No Existen datos");
 			

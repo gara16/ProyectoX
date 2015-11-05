@@ -27,7 +27,7 @@ class CUsuario extends CI_Controller{
 		$iddatos=$this->modelo->agregarDatos($Adatos);
 		if ($iddatos!=null) {
 			settype($iddatos["0"], "array");
-			$Ausuario=array('usuario'=>$usuario,'password'=>$password,'idtipousuario'=>'0','iddatos'=>$iddatos["0"]["iddatos"]);
+			$Ausuario=array('usuario'=>$usuario,'password'=>$password,'idtipousuario'=>'2','iddatos'=>$iddatos["0"]["iddatos"]);
 			$valor=$this->modelo->agregarUsuario($Ausuario);
 			if ($valor) {
 				$mensaje = "Se Agrego Usuario correctamente";
