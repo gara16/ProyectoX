@@ -107,7 +107,10 @@
                                 </div> 
                                                                
                                 <button  class="btn btn-lg btn-primary " ng-click="btnreset()">Reset</button>
-                                <button  class="btn btn-lg btn-primary " ng-click="btnregistro()">Ingresar</button>
+                                <button  class="btn btn-lg btn-primary " 
+                                ng-disabled = "FRegistro.Rnombre.$dirty && FRegistro.Rnombre.$invalid || FRegistro.Apellidos.$dirty && FRegistro.Apellidos.$invalid || FRegistro.Dnis.$dirty &&
+                                FRegistro.Dnis.$invalid || FRegistro.Emails.$dirty &&
+                                FRegistro.Emails.$invalid" ng-click="btnregistro()">Ingresar</button>
                             </form>
                             
                         </div>
