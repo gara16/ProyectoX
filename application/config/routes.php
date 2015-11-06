@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "cProducto";
+$route['default_controller'] = "clogin";
 $route['404_override'] = '';
 
 

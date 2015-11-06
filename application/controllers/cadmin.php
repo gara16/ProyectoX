@@ -12,7 +12,7 @@ class Clogin extends CI_Controller{
 
 	function index(){
 		if($this->session->userdata('tipouser') != '1') redirect('clogin');
-		else $this->load->view('admin.html');
+		else $this->load->view('index.html');
 	}
 
 	function capturaDatosProducto(){

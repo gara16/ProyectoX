@@ -12,7 +12,7 @@ class CUsuario extends CI_Controller{
 
 	function index(){
 		if($this->session->userdata('tipouser') != '2') redirect('clogin');
-		else $this->load->view('usuario.html');
+		else $this->load->view('index.html');
 	}
 
 	function listarProducto(){
