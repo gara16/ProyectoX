@@ -30,21 +30,26 @@ app.controller('Ctrlogeo',['$scope','$location','$http','fresg',function($scope,
 			
 	};
 	$scope.btnregistrar=function(){
-		$scope.flag=true;
-		$scope.datos=$scope.registro;
-		console.log("datos de registro")
-		console.log($scope.registro)
+
+		if ($scope.registro['user'] && $scope.registro['pass']) {
+			$scope.flag=true;
+			$scope.datos=$scope.registro;
+			console.log("datos de registro")
+			console.log($scope.registro)
+			
+			
+			fresg.factusuario($scope.datos).success(function(a){
+				alert(a);
+				console.log("datos")
+				console.log(a)
+				console.log("datos")
+				}).error(function(b) {
+					alert(b);
+				});
+			$location.path('/Vventas');
+
+		}else alert("Faltan datos");
 		
-		
-		fresg.factusuario($scope.datos).success(function(a){
-			alert(a);
-			console.log("datos")
-			console.log(a)
-			console.log("datos")
-			}).error(function(b) {
-				alert(b);
-			});
-		$location.path('/Vventas');
 			
 	};
 

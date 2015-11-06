@@ -75,6 +75,7 @@ class Clogin extends CI_Controller{
 					$Adatos=array('nombre'=>$nombre,'apellido'=>$apellido,'dni'=>$dni,'email'=>$email,'telefono'=>$tele,'idusuario'=>$iduser["0"]["idusuario"]);
 					if ($this->modelo->agregarDatos($Adatos)) {
 							$this->validarLogueo($usuario,$password);
+							$mensaje = "JODETE";
 						//return json_encode(array("respuesta"=>"El Usuario y los datos fue registrado con éxito"));
 					} else $mensaje="El Usuario fue registrado pero no los datos, Porfavor Actualize sus datos";
 				} else $mensaje="Ocurrió un error al intentar registrar el usuario";
