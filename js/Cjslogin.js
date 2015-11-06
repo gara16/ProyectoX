@@ -1,6 +1,6 @@
 var app = angular.module('SVentas');
 
-app.controller('Clogeo',['$scope','$location','$http','fresg',function($scope,$location,$http,fresg){
+app.controller('Ctrlogeo',['$scope','$location','$http','fresg',function($scope,$location,$http,fresg){
 	$scope.flag=true;
 	$scope.datos={};
 	
