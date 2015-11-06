@@ -12,7 +12,7 @@ class Clogin extends CI_Controller{
 	}
 
 	function index(){
-		$this->load->view('logueo.html');
+		$this->load->view('index.html');
 	}
 	function validarDatosLogueo(){
 		$this->form_validation->set_rules('usuario', 'Usuario', 'trim|required|max_length[15]|xss_clean');
