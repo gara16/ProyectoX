@@ -38,7 +38,9 @@ app.controller('Ctrlogeo',['$scope','$location','$http','fresg',function($scope,
 		
 		fresg.factusuario($scope.datos).success(function(a){
 			alert(a);
+			console.log("datos")
 			console.log(a)
+			console.log("datos")
 			}).error(function(b) {
 				alert(b);
 			});

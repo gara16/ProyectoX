@@ -76,10 +76,12 @@ class Clogin extends CI_Controller{
 					if ($this->modelo->agregarDatos($Adatos)) {
 							$this->validarLogueo($usuario,$password);
 						//return json_encode(array("respuesta"=>"El Usuario y los datos fue registrado con éxito"));
-					} else return json_encode(array("respuesta"=>"El Usuario fue registrado pero no los datos, Por favor Actualize sus datos"));
-				} else return json_encode(array("respuesta"=>"Ocurrió un error al intentar registrar el usuario"));
-			} else return json_encode(array("respuesta"=>"Eliga otro usuario, el que proporciona ya se encuentra registrado"));
-		} else return json_encode(array("respuesta"=>"Los datos proporcionados son incorrectos"));
+					} else $mensaje="El Usuario fue registrado pero no los datos, Porfavor Actualize sus datos";
+				} else $mensaje="Ocurrió un error al intentar registrar el usuario";
+			} else $mensaje="Eliga otro usuario, el que proporciona ya se encuentra registrado";
+		} else $mensaje="Los datos proporcionados son incorrectos";
+
+		return json_encode($mensaje);
 	}
 }	
 ?>
