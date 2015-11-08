@@ -10,7 +10,7 @@ app.controller('Ctrlogeo',['$scope','$location','$http','factuser',function($sco
 			
 			if ($scope.login['user'] == "admin" && $scope.login['pass'] == "1234") {
 
-				$location.path('/Vproducto');
+				$location.path('/Vventas');
 
 			}else{
 				alert("Usuario invalido - :/");
