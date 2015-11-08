@@ -30,9 +30,10 @@ class Cadmin extends CI_Controller{
 		$this->validarProducto();
 		if($this->form_validation->run()!=FALSE){
 			if ($this->modelo->agregarProduct($array)){
-				echo json_encode(array("respuesta" => "El producto fue registrado con éxito"));
-            } else echo json_encode(array("respuesta" => "Hubo un error al registrar el producto"));
-		} else echo json_encode(array("respuesta" => "Los datos proporcionados son erróneos"));
+				$mensaje['dato']="El producto fue registrado con éxito";
+            } else $mensaje['error']="Hubo un error al registrar el producto";
+		} else $mensaje['error']="Los datos proporcionados son erróneos";
+		echo json_encode($mensaje);
 	}
 	function modificarProducto(){
 		$producto=$this->capturaDatosProducto();
@@ -80,7 +81,7 @@ class Cadmin extends CI_Controller{
 		$id=$this->input->post('idproducto');
 		$producto=array('estado'=>'0');
 		if ($this->modelo->modificarProducto($id,$producto)) {
-			$valor="Producto eliminado";
+			$valor="Exito al eliminar producto";
 		} else $valor="Ocurrio un error al eliminar producto";
 		echo json_encode($valor);
 	}

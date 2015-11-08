@@ -1,0 +1,51 @@
+th,.descripcion,.producto{
+	text-align: center;
+}
+.info{
+	text-align: right;
+}
+#titulo{
+	text-align: center;
+	font-size: 3.5em;
+	padding: 30px;
+	text-shadow: 3px 3px 10px rgba(888,888,888,0.8);
+	font-family: cursive;
+}
+#footerPrecio{
+	text-align: right;
+	margin:10px;
+	padding:40px 0px;
+}
+table{
+	border: 2px dotted #ccc;
+}
+td,th{
+	border-right: 2px dotted #ccc;
+}
+#precio{
+	font-size: 1.5em;
+}
+#usuario{
+	padding: 0px 0px 10px 10px;
+	font-size: 1.2em;
+	font-family: Arial;
+}
+body{
+	background: url('../img/negro.png'),url('../img/chulu2.jpg') top center no-repeat fixed;
+	background-size:cover;
+}
+#centro{
+	background-color: rgba(255,255,255,0.9);
+}
+#final{
+	padding: 30px 10px;
+	text-align: right;
+	background-color: rgba(0,0,0,0.9);
+	font-family: cursive;
+	font-size: 1.4em;
+}
+#final>p{
+	padding: 0px;
+	margin: 0px;
+	color:#FFF;
+}

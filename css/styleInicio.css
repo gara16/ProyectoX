@@ -1,0 +1,144 @@
+@font-face {
+	font-family: 'Brush';
+	src : url(../fonts/AlexBrush-Regular.ttf);
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+body{
+	background: url('../img/negro.png'),url('../img/chulu2.jpg') top center no-repeat fixed;
+	background-size:cover;
+}
+div{
+	border:0px solid;
+}
+.producto{
+	margin: 0px;
+	padding: 5px;
+}
+#name{
+	font-size: 4.0em;
+	padding-top: 10px;
+	margin:0px;
+	font-family: sans-serif;
+
+}
+#lemaE{
+	font-size: 2.0em;
+	padding: 0px;
+	margin-top:0px;
+	margin-bottom: 30px;
+	font-family: 'Brush';
+}
+#portada{
+	text-align: center;
+	margin-top: 0px;
+	padding-top: 15px;
+	background-color: #FFF;
+    font-family: cursive;
+}
+form{
+	padding: 10px;
+}
+input.radio{
+	padding: 10px;
+}
+.entrada{
+	padding: 5px;
+	font-family: courier;
+}
+.entrada:hover{
+	transform: scale(1.01,1.01);
+}
+.opciones{
+	background-color: #FFF;
+	padding: 10px;
+	margin-top: 20px;
+	border-radius: 20px;
+	box-shadow: 0 0 5px 5px #888;
+	font-size: 1.1em;
+}
+.opciones>p{
+	font-family: Arial;
+}
+#footer{
+	padding: 10px;
+	text-align: right;
+	background-color: rgba(0,0,0,0.9);
+	font-family: cursive;
+	font-size: 1.4em;
+}
+#footer>p{
+	padding: 0px;
+	margin: 0px;
+	color:#FFF;
+}
+#letrero,#caja{
+	margin-top:10px;
+}
+#letrero{
+	width: 60%;
+	font-size: 0.9em;
+	margin-top: 15px;
+}
+#caja{
+	font-size: 1.2em;
+}
+.descripcion{
+	text-align: justify;
+}
+.agregar{
+	width: 100%;
+	margin: 10px 0px;
+}
+#precio{
+	text-align: right;
+	border: 1px solid #FFF;
+}
+#redess{
+	padding: 40px;
+	margin: 0px 0px;
+	background-color: #FFF;
+	border-radius: 20px 20px 0px 0px;
+	box-shadow: 0 0 5px 5px #888;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.foto{
+	padding: 1px;
+}
+.foto:hover{
+	transform: scale(1.1,1.1);
+}
+#myfoto:hover{
+	transform: scale(1.02,1.02);
+}
+#vit{
+	padding: 10px;
+	text-align: center;
+}
+#mision,#vision{
+	text-align: justify;
+}
+#centro{
+	background-color: rgba(255,255,255,0.9);
+}
+#cajita{
+	margin: 0px;
+	padding: 5px;
+	border: 1px solid rgba(0,0,0,0.2);
+	background-color: rgba(255,255,255,1);
+	text-align: center;
+}
+#logo{
+	margin: 15px 0px 0px 15px;
+}
+#fondo{
+	margin-top: 40px;
+}
+#carrito{
+	text-align: right;
+	margin: 5px;
+}

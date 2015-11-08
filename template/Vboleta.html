@@ -1,0 +1,81 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>REGISTRAR</title>
+	<link rel="stylesheet" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/styleBoleta.css">
+</head>
+<body>
+	<div class="container">
+		<div class="col-md-1"></div>
+		<div id="centro" class="col-md-10">
+			<!--Primera fila-->
+			<div id="titulo" class="row">
+				<p>Boleta de Venta</p>
+			</div>
+			<div id="borde">
+				<div id="usuario" class="row">
+					<label>Usuario : </label><p>Garavito16</p>
+				</div>
+
+				<!--segunda fila: tabla -->
+				<div class="row">
+					<form id="realizarCompra">
+						<table class="table table-responsive table-hover">
+							<thead class="row">
+								<th class="col-md-1">CANTIDAD</th>
+							    <th class="col-md-2">PRODUCTO</th>
+							    <th class="col-md-2">PRECIO UNIDAD</th>
+							    <th class="col-md-2">PRECIO TOTAL</th>
+							    <th class="col-md-2"></th>
+						    </thead>
+						    <tbody id="verCarrito">
+						    	<tr class='info'>
+									<td class='cant'>4</td>
+									<td class='producto'>Leche Gloria</td>
+									<td class='precioP'>S/. 3.50</td>
+									<td class='precioT'>S/. 14.00</td>
+									<td><img class='image img-responsive' src='img/borrar.png'></td>
+								</tr>
+								<tr class='info'>
+									<td class='cant'>4</td>
+									<td class='producto'>Leche Gloria</td>
+									<td class='precioP'>S/. 3.50</td>
+									<td class='precioT'>S/. 14.00</td>
+									<td><img class='image img-responsive' src='img/borrar.png'></td>
+								</tr>
+								<tr class='info'>
+									<td class='cant'>4</td>
+									<td class='producto'>Leche Gloria</td>
+									<td class='precioP'>S/. 3.50</td>
+									<td class='precioT'>S/. 14.00</td>
+									<td><img class='image img-responsive' src='img/borrar.png'></td>
+								</tr>
+					        </tbody>
+						</table>
+						<div id="footerPrecio">
+							<div id="precio">
+								<label>Total : S/.<span>30.52</span></label>
+							</div>
+						    <input type="submit" class="btn btn-primary" value="Realizar Compra"/>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+	<footer>
+		<div class="row">
+			<div id="final" class="col-md-12">
+				<p>Negocios Malibu</p>
+				<p>Av. Ramon Castilla N° 808</p>
+				<p>negociosmalibu@outlook.com</p>
+				<p>Chulucanas, Piura, Per&uacute;</p>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>

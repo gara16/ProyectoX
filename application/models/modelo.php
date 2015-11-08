@@ -34,6 +34,10 @@ class Modelo extends CI_Model{
 						->from('producto')->get()->result();
 		return $datos;
 	}
+	function buscarProducId($id){
+		$dato=$this->db->select('nombreprod,precio')->where('idproducto',$id)->from('producto')->get()->result();
+		return $dato;
+	}
 	function modificarProducto($id,$producto){
 		$this->db->where('idproducto',$id);
 		if ($this->db->update('producto',$producto)) {
@@ -56,7 +60,7 @@ class Modelo extends CI_Model{
 	function loguear($usuario,$password){
 		$this->db->where('usuario',$usuario)->from('usuario');
 		if ($this->db->count_all_results() === 1) {
-			$logueo=$this->db->select('idtipousuario')
+			$logueo=$this->db->select('idusuario,idtipousuario')
 			->where('usuario',$usuario)->where('password',$password)
 			->from('usuario')->get()->result();
 			return $logueo;
@@ -116,12 +120,35 @@ class Modelo extends CI_Model{
 	}
 	function buscarProveedor($idProveedor){
 		$dato=$this->db->select('nombre,apellido,direccion,compañia,fono,dni,ruc,img')
-		->where('idproveedor',$idProveedor)->get()->result();
+		->from('proveedor')->where('idproveedor',$idProveedor)->get()->result();
 		return $dato;
 	}
 	function modificarProveedor($idProveedor,$proveedor){
 		$this->db->where('idproveedor',$idProveedor);
 		if ($this->db->update('proveedor',$proveedor)) {
+			return true;
+		} else return false;
+	}
+
+	/*Las siguientes funciones estan relacionadas a operaciones con la boleta*/
+	function crearBoleta($pedido){
+		if ($this->db->insert('boleta',$pedido)) {
+			return true;
+		} else return false;
+	}
+	function agregarDetalleBol($detalle){
+		if ($this->db->insert('detalleboleta',$detalle)) {
+			return true;
+		} else return false;
+	}
+	function buscaIdBoleta($idusuario){
+		$dato=$this->db->select('idboleta')->from('boleta')->where('idusuario',$idusuario)
+		->where('estado','0')->get()->result();
+		return $dato;
+	}
+	function cambiarEstadoBol($idboleta,$estado){
+		$this->db->where('idboleta',$idboleta);
+		if ($this->db->update('boleta',$estado)) {
 			return true;
 		} else return false;
 	}

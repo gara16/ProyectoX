@@ -11,7 +11,6 @@ app.factory('fagregar', function ($http) {
 		fagregarP:function($valor){
 			return $http.post('cadmin/agregarProducto',JSON.stringify($valor));
 		}
-		
 	};
 });
 
@@ -31,11 +30,14 @@ app.factory('flistar', function ($http) {
 		}
 	}
 });
-app.factory('fresg', function ($http) {
+app.factory('factuser', function ($http) {
 	return {
 
 		factusuario:function(valor){
 			return $http.post('clogin/agregarUsuario',JSON.stringify(valor));
-		}	
+		},
+		sessionUsuario:function(){
+			return $http.post('clogin/obtenerSession');
+		}
 	}
 });

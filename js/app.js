@@ -18,3 +18,20 @@ app.config(function($routeProvider){
 		redirectTo: '/'
 	});
 });
+app.run(['$rootScope','$location','factuser', function($rootScope,$location,factuser){
+     $rootScope.$on('$routeChangeStart', function( event, route)
+     {
+      factuser.sessionUsuario().success(function(data){
+      	if(data.estado){
+         	if(route.templateUrl=='template/Login.html'){
+               $location.path('/Vventas');
+            }
+         }
+         else {
+       	 	if(route.templateUrl=='template/Vventas.html'|| route.templateUrl=='template/Vproducto.html'){
+              	 $location.path('/');
+             }
+         }
+      }).error(function(b){alert(b);});
+     });
+}]);

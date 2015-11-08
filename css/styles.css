@@ -1,61 +1,13 @@
 body {
-    /*background-color: #AFEEEE;
-    background: linear-gradient(#87CEe0,#FFFFFF,#DCDCDC);*/
     background: url('../img/negro.png'),url('../img/chulu2.jpg') top center no-repeat fixed;
     background-size:cover;
 }
-h1{
-    text-shadow: 0.1em 0.1em 0.2em grey;
-    font-family: times;
-
-}
-p{
-    font-family: times;
-    font-size: 1.3em;
-}
-a{
-     font-family: times;
-    font-size: 1.4em;
-    color: blue;
-}
-.foot{
-    text-align: center;
-}
-form {
-       text-shadow: 0px 0px 0px rgba(0,0,0,0.5);
-}
-input,
-button {
-    margin: 10px;
- }
-#login {
-    background-color: rgba(240,248,255,0.5);
-    margin: 20px;
-    border-radius: 10px;  
-}
-#nebaris {
-    background-color: #000;
-    color: white;
-    padding: 15px;
-    text-align: center;
-    font-family: times;
-    margin-top: 300px;
-}
-#nebaris a {
-    color: rgb(178, 255, 178);
-    border: 0; 
-}
-#nebaris a:hover {
-    color: black;
-    background-color: black;
-}
-.img{
-    border-radius: 19px;
-    box-shadow: 0 0 10px 10px #AFEEEE;
-}
-#titulo,#tit{
-    margin-top: 15px;
-}
-.centro{
+#central{
+    padding-bottom: 3.0em;
     background-color: rgba(255,255,255,0.9);
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }
