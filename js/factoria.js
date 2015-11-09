@@ -1,6 +1,6 @@
 var app = angular.module('SVentas');
 
-app.factory('fagregar', function ($http) {
+app.factory('fadmin', function ($http) {
 	return {
 		flistarT:function(){
 			return $http.get('cadmin/listarTipo');
@@ -10,12 +10,7 @@ app.factory('fagregar', function ($http) {
 		},
 		fagregarP:function($valor){
 			return $http.post('cadmin/agregarProducto',JSON.stringify($valor));
-		}
-	};
-});
-
-app.factory('flistar', function ($http) {
-	return {
+		},
 		flistarP:function(){
 			return $http.get('cadmin/listarProducto');
 		},
@@ -27,17 +22,36 @@ app.factory('flistar', function ($http) {
 		},
 		fmodificarP:function($valor){
 			return $http.post('cadmin/modificarProducto',JSON.stringify($valor));
+		},
+		factcerrar:function(){
+			return $http.post('clogin/logout');
 		}
-	}
+	};
 });
+
 app.factory('factuser', function ($http) {
 	return {
 
+		factlogeo:function(valor){
+			return $http.post('clogin/loguear',JSON.stringify(valor));
+		},
 		factusuario:function(valor){
 			return $http.post('clogin/agregarUsuario',JSON.stringify(valor));
 		},
 		sessionUsuario:function(){
 			return $http.post('clogin/obtenerSession');
+		}
+	}
+});
+
+app.factory('factventa', function ($http) {
+	return {
+
+		factcerrar:function(){
+			return $http.post('clogin/logout');
+		},
+		factlistarP:function(){
+			return $http.get('cadmin/listarProducto');
 		}
 	}
 });

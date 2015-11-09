@@ -1,0 +1,26 @@
+Importante ... para comenzar a trabajar con angularjs tienes que importar el .js respectivo 
+	https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js 
+		este es el mas importante. si o si se tiene que importar en el index 
+
+	* todos las librerias solo se ubican en el view/index.	
+	** dato de vida o muerte crear el ng-app que es el nombre de proyecto que utilizara angularjs para manejar todo lo que hagas
+	*** de preferencia poner el ng-app en la cabecera de la etiqueta <html ng-app="Miapp">
+	**** De preferencia para comenzar a trabajar tener nuestras librerias en una carpeta js dentro del proyecto para cuando tengamos problemas de que se nos fue el internet ... aveces me pasa LO SIENTO NO ME JUZGUEN!!!
+
+
+1. los ng-model se pueden llamar de acuerdo a tus input.text pero para ahorrar lineas de codigo es mas eficiente usar objetos ejemplo dato.text1, dato.text2 y asi poder enviar todo el objeto.
+2. si tu .htacces esta mal configurado o no lo tienes es necesario agregar en tu factoria index.php/ delante de cualquier ruta.
+3. en tu template puedes tener varios ng-controller pero teniendo en cuenta que no puedes enviar datos de un ng-controller a otro.. es mejor tener un ng-controller general y en tu controlador.js utilices varios metodos.
+4. tener en cuenta llamar a todos tus .js en tu vista index(asegurarse que los nombres sea iguales)
+5. si trabajas con rutas(router) solo se tiene en /view un index que llama a todo el proyecto con ng-view
+6. las demas vistas que quieras utilizar se consideran template's 
+7. a la .js que maneja las rutas se le llamara app.js en el se creara el modulo con parametros(Nommbre del ng-app,['ngRoute']) los demas .js solo le pasas parametro (Nombre del ng-app)
+8. si deseas seguir a pie de letra el MVC es mejor trabajar con factoria.js que sera un enlazador entre tus controladores de .php y nuestro controlador .js ... es mas profesional hacer esto TE DA LEVEL PULPIN.
+9. para mostrar o ocultar varios formularios,imagenes,botones,texto o lo que gustes en tu template puedes utilizar ng-show="flag" y ng-hiden="flag" y asi solo usar una variable de bandera 
+10. trata de diferencia claramente las variables que utilices en tu input 
+		ejemplo <input type="text" name="Nombre" id="idnombre" ng-model="dato.nombre">
+	si haces esto pulpin 
+		ejemplo <input type="text" name="nombre" id="nombre" ng-model="dato.nombre">
+		al momento de hacer validaciones en html puedes tener problemas invisibles de que no se pudo enviar el dato.
+11. es recomdable utilizar json para enviar los datos de .js a .php porque se hace mas liviano y seguro ... recuerda que cuando recuperes los valores en .php llamarlos con los mismo nombre de tu ng-model 
+12. cuando traes un dato de .php mayormente lo traes de forma de array

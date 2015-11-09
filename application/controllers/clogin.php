@@ -41,7 +41,7 @@ class Clogin extends CI_Controller{
 
 	function obtenerSession(){
 		if($this->session->userdata('alias')){
-			$dato=array('estado'=>TRUE,'id'=>$this->session->userdata('idUser'),'tipouser'=>$this->session->userdata('tipouser'));
+			$dato=array('estado'=>TRUE,'id'=>$this->session->userdata('idUser'),'user'=>$this->session->userdata('alias'),'tipouser'=>$this->session->userdata('tipouser'));
 		}else{
 			$dato=array('estado'=>FALSE);
 		}

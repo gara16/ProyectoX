@@ -6,13 +6,13 @@ app.config(function($routeProvider){
 		templateUrl: 'template/Login.html',
 		controller: 'Ctrlogeo'
 	})
-	.when('/Vproducto', {
-		templateUrl: 'template/Vproducto.html',
-		controller: 'Producto'
+	.when('/Vadmin', {
+		templateUrl: 'template/Vadmin.html',
+		controller: 'Ctrladmin'
 	})
 	.when('/Vventas', {
 		templateUrl: 'template/Vventas.html',
-		controller: 'Ctrlogeo'
+		controller: 'Ctrlventa'
 	})
 	.otherwise({
 		redirectTo: '/'
@@ -22,6 +22,7 @@ app.run(['$rootScope','$location','factuser', function($rootScope,$location,fact
      $rootScope.$on('$routeChangeStart', function( event, route)
      {
       factuser.sessionUsuario().success(function(data){
+      	$rootScope.Usuario=data.user;
       	if(data.estado){
          	if(route.templateUrl=='template/Login.html'){
                $location.path('/Vventas');

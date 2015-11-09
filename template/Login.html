@@ -16,15 +16,15 @@
 						    <div class="pull-right">
     					        <form name="Flogeo" class="navbar-form" role="form" novalidate>
         					        <div class="input-group">
-        					            <input name="USER" type="text" class="form-control" placeholder="Usuario" ng-model="login.user">
+        					            <input name="USER" type="text" class="form-control" placeholder="Usuario" ng-model="login.usuario">
         					        </div>
         					        <div class="input-group">
-        					            <input name="PASS" type="password" class="form-control" placeholder="Password" ng-model="login.pass">
+        					            <input name="PASS" type="password" class="form-control" placeholder="Password" ng-model="login.password">
         					        </div>
                                 </form>
                             </div>
 				    	</li>
-				    	<li><a type="button" class="btn btn-link" ng-click="logear()"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+				    	<li><a type="button" class="btn btn-link" ng-click="logear(login)"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
 
 				    </ul>
 				    
@@ -107,7 +107,7 @@
                                                                
                                 <button  class="btn btn-lg btn-primary " ng-click="btnreset()">Reset</button>
                                 <button  class="btn btn-lg btn-primary " 
-                                ng-disabled = "!FRegistro.$valid" ng-click="btnregistro()">Ingresar</button>
+                                ng-disabled = "!FRegistro.$valid" ng-click="btnregistro(registro)">Ingresar</button>
                             </form>
                             
                         </div>

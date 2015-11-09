@@ -1,4 +1,4 @@
-<div  class="container" ng-controller="Producto" >	
+<div  class="container" ng-controller="Ctrladmin" >	
 	<nav class="navbar navbar-fixed-top navbar-inverse">
 	            
 		<div class="container" >
@@ -13,8 +13,12 @@
 		     	
 		    <div class="collapse navbar-collapse navHeaderCollapse">
 			    <ul class=" nav navbar-nav navbar-right">
-			         <li><a class="btn btn-link" type="button" ng-click="inicio()">
-			              <span class="glyphicon glyphicon-home"></span> Inicio </a></li>
+			         <li><a type="label" ng-model="User">
+			              <span class="glyphicon glyphicon-parents"></span>$</a>
+			        </li>
+			    	<li><a class="btn btn-link" type="button" ng-click="cerrar()">
+			              <span class="glyphicon glyphicon-home"></span> CERRAR SESI&Oacute;N </a>
+			        </li>
 			    </ul>
 		    </div>
 		                             
@@ -26,7 +30,7 @@
 
 	</div>
 	
-	<h1>Ingresar Nuevo Producto</h1>
+	<h1><font color="white">Ingresar Nuevo Producto</h1>
 	<form class="form-horizontal" role="form" name="Aproducto"  novalidate>
 		
 		<div class="form-group">
@@ -60,7 +64,7 @@
 	    </div>
 
 	    <div class="form-group">
-	      <label class="control-label col-sm-2" for="Idmedida">IDMEDIDA:</label>
+	      <label class="control-label col-sm-2" for="Idmedida">MEDIDA:</label>
 	      <div class="col-sm-4">
 	        <select name="Medidas" class="form-control" id="idmedida" ng-options="c.idmedida as c.medida for c in listaM" ng-model="producto.idmedida"  required></select>
 			<span style = "color:red" ng-show = "Aproducto.Medidas.$dirty && Aproducto.Medidas.$invalid">
@@ -70,7 +74,7 @@
 	    </div>
 
 	    <div class="form-group">
-	      <label class="control-label col-sm-2" for="IDTIPO">IDTIPO:</label>
+	      <label class="control-label col-sm-2" for="IDTIPO">TIPO:</label>
 	      <div class="col-sm-4">
 	        <select name="Tipos" class="form-control" id="idtipo" ng-options="b.idtipoprod as b.tipoprod for b in listaT" ng-model="producto.idtipo"  required></select>
 	        <span style = "color:red" ng-show = "Aproducto.Tipos.$dirty && Aproducto.Tipos.$invalid">
@@ -93,10 +97,10 @@
 	</form>
 	
 				
-	<div class="table-responsive">
+	<div class="table table-bordered">
 		<div class="form-group">
 		     <div class="col-sm-4">
-		     	<h1>Lista de Productos</h1>
+		     	<h1>Lista de Productos<font color="black" size="4"></h1>
 		        <input type="search"  class="form-control" ng-model="busqueda"   placeholder="Buscar Producto"><br>
 		     </div>
 		</div>

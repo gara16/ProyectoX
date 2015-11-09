@@ -1,21 +1,21 @@
 var app = angular.module('SVentas');
 
-app.controller('Producto',['$scope','$http','$location','fagregar','flistar',function($scope,$http,$location,fagregar,flistar){
+app.controller('Ctrladmin',['$scope','$http','$location','fadmin',function($scope,$http,$location,fadmin){
 	$scope.producto={};
 	$scope.flag=true;
 	$scope.id="";
 	
-	fagregar.flistarT().success(function(b){
+	fadmin.flistarT().success(function(b){
 			$scope.listaT=b.lista;
 			$scope.mensaje=b.error;
 		});
 
-	fagregar.flistarM().success(function(c){
+	fadmin.flistarM().success(function(c){
 			$scope.listaM=c.lista;
 			$scope.mensaje=c.error;
 	});
 
-	flistar.flistarP().success(function(a){
+	fadmin.flistarP().success(function(a){
 			$scope.listaP=a.lista;
 			$scope.mensaje=a.error;
 	});
@@ -23,7 +23,7 @@ app.controller('Producto',['$scope','$http','$location','fagregar','flistar',fun
 
 	$scope.submit = function(id){
 		if ($scope.flag) {
-			fagregar.fagregarP($scope.producto).success(function(a){
+			fadmin.fagregarP($scope.producto).success(function(a){
 			alert(a)
 			}).error(function(b) {
 				alert(b);
@@ -32,7 +32,7 @@ app.controller('Producto',['$scope','$http','$location','fagregar','flistar',fun
 		}else{
 			$scope.producto[0]=$scope.id;
 			console.log($scope.producto)
-			flistar.fmodificarP($scope.producto).success(function(a){
+			fadmin.fmodificarP($scope.producto).success(function(a){
 			alert(a)
 			}).error(function(b) {
 				alert(b);
@@ -50,7 +50,7 @@ app.controller('Producto',['$scope','$http','$location','fagregar','flistar',fun
 
 	$scope.modificar = function($dato){
 		$scope.flag=false;
-		flistar.fbuscarP($dato).success(function(a){
+		fadmin.fbuscarP($dato).success(function(a){
 			$scope.producto=a.lista[0];
 			$scope.mensaje=a.error;
 			$scope.id=$dato.idproducto;
@@ -61,14 +61,16 @@ app.controller('Producto',['$scope','$http','$location','fagregar','flistar',fun
 
 	$scope.eliminar = function($dato){
 
-		flistar.feliminarP($dato).success(function(a){
+		fadmin.feliminarP($dato).success(function(a){
 			alert(a)
 		});
 		
 	};
 
-	$scope.inicio=function(){
-		$location.path('/');
+	$scope.cerrar=function(){
+		fadmin.factcerrar().success(function(){
+			$location.path('/');
+		});
 	};
 
 			

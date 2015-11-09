@@ -4,25 +4,34 @@ app.controller('Ctrlogeo',['$scope','$location','$http','factuser',function($sco
 	$scope.flag=true;
 	$scope.datos={};
 	$scope.valor=null;
-	$scope.logear=function(){
+
+	$scope.logear=function(login){
 		
-		if ($scope.login!=null) {
+		if (login!=null) {
 			
-			if ($scope.login['user'] == "admin" && $scope.login['pass'] == "1234") {
+			factuser.factlogeo(login).success(function(a){
+				console.log(a.dato)
+				if (a.error!=null) {
+					alert(a.error);
+					console.log(a.error);
+				};
+				if (a.dato==1) {
+					$location.path('/Vadmin');
+				};
+				if (a.dato==2) {
+					$location.path('/Vventas');
+				};
 
-				$location.path('/Vventas');
-
-			}else{
-				alert("Usuario invalido - :/");
-				$scope.login=null;
-			};
+			}).error(function(b){
+				alert(b);
+			})
 			
 		}else alert("Ingresar Valores de Campos");
 		
 	};
-	$scope.btnregistro=function(){
-		if ($scope.registro!=null) {
-			if ($scope.registro['nombre'] &&  $scope.registro['apellido'] &&  $scope.registro['dni'] &&  $scope.registro['email'] &&  $scope.registro['telefono']){
+	$scope.btnregistro=function(dato){
+		if (dato!=null) {
+			if (dato.nombre &&  dato.apellido &&  dato.dni &&  dato.email &&  dato.telefono){
 				$scope.flag=false;
 			}else alert("faltan datos");
 			
