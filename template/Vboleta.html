@@ -1,13 +1,35 @@
-<html>
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<title>REGISTRAR</title>
-	<link rel="stylesheet" href="./css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/styleBoleta.css">
-</head>
-<body>
+<div class="container" ng-controller="Ctrlboleta">
+	<nav class="navbar navbar-fixed-top navbar-inverse">
+	            
+		<div class="container" >
+		             
+		    <div class="navbar-brand navbar-left">
+		    	<img src="Imagenes/icono.ico" width="70" height="70">
+		         
+		    </div>  
+		    <div class="navbar-brand">
+		    	Transaccion Productos 
+		    </div>
+		     	
+		    <div class="collapse navbar-collapse navHeaderCollapse">
+			    <ul class=" nav navbar-nav navbar-right">
+			        <li><a type="label" ng-model="usuario_user">
+			              <span class="glyphicon glyphicon-user"></span>{{var_user}}</a>
+			        </li>
+			    	<li><a class="btn btn-link" type="button" ng-click="cerrar()">
+			              <span class="glyphicon glyphicon-home"></span> CERRAR SESI&Oacute;N </a>
+			        </li>
+			    </ul>
+		    </div>
+		                             
+		</div>
+		
+	</nav>
+
+	<div class="jumbotron">
+
+	</div>
+
 	<div class="container">
 		<div class="col-md-1"></div>
 		<div id="centro" class="col-md-10">
@@ -17,7 +39,7 @@
 			</div>
 			<div id="borde">
 				<div id="usuario" class="row">
-					<label>Usuario : </label><p>Garavito16</p>
+					<label>Usuario : </label> {{var_user}}
 				</div>
 
 				<!--segunda fila: tabla -->
@@ -51,7 +73,7 @@
 									<td class='producto'>Leche Gloria</td>
 									<td class='precioP'>S/. 3.50</td>
 									<td class='precioT'>S/. 14.00</td>
-									<td><img class='image img-responsive' src='img/borrar.png'></td>
+									<td><a type="button" class="btn btn-danger"  ng-click="eliminar(list)"><span class="glyphicon glyphicon-remove"></span>Eliminar</a></td>
 								</tr>
 					        </tbody>
 						</table>
@@ -77,5 +99,4 @@
 			</div>
 		</div>
 	</footer>
-</body>
-</html>
+</div>

@@ -14,6 +14,10 @@ app.config(function($routeProvider){
 		templateUrl: 'template/Vventas.html',
 		controller: 'Ctrlventa'
 	})
+  .when('/Vboleta', {
+    templateUrl: 'template/Vboleta.html',
+    controller: 'Ctrlboleta'
+  })
 	.otherwise({
 		redirectTo: '/'
 	});
@@ -22,14 +26,18 @@ app.run(['$rootScope','$location','factuser', function($rootScope,$location,fact
      $rootScope.$on('$routeChangeStart', function( event, route)
      {
       factuser.sessionUsuario().success(function(data){
-      	$rootScope.Usuario=data.user;
+      	$rootScope.var_user=data.user;
+      	console.log(data.user);
       	if(data.estado){
          	if(route.templateUrl=='template/Login.html'){
-               $location.path('/Vventas');
+              if (data.tipouser==1) {
+                $location.path('/Vadmin');
+              }else $location.path('/Vventas');
+               
             }
          }
          else {
-       	 	if(route.templateUrl=='template/Vventas.html'|| route.templateUrl=='template/Vproducto.html'){
+       	 	if(route.templateUrl=='template/Vventas.html'|| route.templateUrl=='template/Vadmin.html' || route.templateUrl=='template/Vboleta.html' ){
               	 $location.path('/');
              }
          }

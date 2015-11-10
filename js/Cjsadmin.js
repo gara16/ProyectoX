@@ -1,6 +1,6 @@
 var app = angular.module('SVentas');
 
-app.controller('Ctrladmin',['$scope','$http','$location','fadmin',function($scope,$http,$location,fadmin){
+app.controller('Ctrladmin',['$scope',"$rootScope",'$http','$location','fadmin',function($scope,$rootScope,$http,$location,fadmin){
 	$scope.producto={};
 	$scope.flag=true;
 	$scope.id="";
@@ -24,7 +24,8 @@ app.controller('Ctrladmin',['$scope','$http','$location','fadmin',function($scop
 	$scope.submit = function(id){
 		if ($scope.flag) {
 			fadmin.fagregarP($scope.producto).success(function(a){
-			alert(a)
+			if (a.error!=null) { alert(a.error)}
+			else alert(a.dato);
 			}).error(function(b) {
 				alert(b);
 			});
@@ -33,7 +34,7 @@ app.controller('Ctrladmin',['$scope','$http','$location','fadmin',function($scop
 			$scope.producto[0]=$scope.id;
 			console.log($scope.producto)
 			fadmin.fmodificarP($scope.producto).success(function(a){
-			alert(a)
+			alert(a.respuesta)
 			}).error(function(b) {
 				alert(b);
 			});

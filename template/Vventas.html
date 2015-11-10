@@ -9,16 +9,16 @@
 		         
 		    </div>  
 		    <div class="navbar-brand">
-		    	Transaccion Productos
+		    	Venta de Productos
 		    </div>
 		     	
 		    <div class="collapse navbar-collapse navHeaderCollapse">
 			    <ul class=" nav navbar-nav navbar-right">
-			    	<li><a type="label" ng-model="User">
-			              <span class="glyphicon glyphicon-parents"></span>$</a>
+			    	<li><a type="label" ng-model="usuario_user">
+			              <span class="glyphicon glyphicon-user"></span>{{var_user}}</a>
 			        </li>
 			    	<li><a class="btn btn-link" type="button" ng-click="carrito()">
-			              <span class="glyphicon glyphicon-shopping-cart"></span> CARRITO </a>
+			              <span class="glyphicon glyphicon-shopping-cart"></span> VER CARRITO </a>
 			          </li>
 			        <li><a class="btn btn-link" type="button" ng-click="cerrar()">
 			              <span class="glyphicon glyphicon-home"></span> CERRAR SESI&Oacute;N </a>
@@ -88,8 +88,6 @@
 											<p>{{prod.nombreprod}}</p>
 											<p>{{prod.precio | currency: $ }}</p>
 											<p>{{prod.stock }}</p>
-											<input type='text' name='cantidad' id='total' ng-model="prod.cant" placeholder='Cantidad'/>
-											<label>Unidad de medida</label>
 										</div>
 									</div>
 									<div>

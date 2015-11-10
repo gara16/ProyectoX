@@ -41,12 +41,13 @@ class Cadmin extends CI_Controller{
 		if($this->form_validation->run()!=FALSE){
 			$id=$this->input->post('0');
 			if ($this->modelo->modificarProducto($id,$producto)) {
-				echo json_encode(array("respuesta" => "El producto fue modificado con éxito"));
-			} else echo json_encode(array("respuesta" => "Hubo un error al modificar el producto"));
-		} else echo json_encode(array("respuesta" => "Los datos proporcionados son erróneos"));
+				$mensaje['respuesta'] = "El producto fue modificado con éxito";
+			} else $mensaje['respuesta'] = "Hubo un error al modificar el producto";
+		} else $mensaje['respuesta'] = "Los datos proporcionados son erróneos";
+		echo json_encode($mensaje);
 	}
 	function validarProducto(){
-		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|min_length[3]|max_length[30]');
+		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|min_length[2]|max_length[30]');
 		$this->form_validation->set_rules('precio', 'Precio', 'trim|required|decimal');
 		$this->form_validation->set_rules('stock', 'Stock', 'trim|required|is_natural');
 		$this->form_validation->set_rules('idmedida', 'IdMedida', 'trim|required|is_natural');

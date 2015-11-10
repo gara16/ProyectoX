@@ -1,6 +1,6 @@
 var app = angular.module('SVentas');
 
-app.controller('Ctrlogeo',['$scope','$location','$http','factuser',function($scope,$location,$http,factuser){
+app.controller('Ctrlogeo',['$scope','$rootScope','$location','$http','factuser',function($scope,$rootScope,$location,$http,factuser){
 	$scope.flag=true;
 	$scope.datos={};
 	$scope.valor=null;
@@ -22,9 +22,13 @@ app.controller('Ctrlogeo',['$scope','$location','$http','factuser',function($sco
 					$location.path('/Vventas');
 				};
 
+				
+
 			}).error(function(b){
 				alert(b);
-			})
+			});
+
+			
 			
 		}else alert("Ingresar Valores de Campos");
 		
