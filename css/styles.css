@@ -2,12 +2,12 @@ body {
     background: url('../img/negro.png'),url('../img/chulu2.jpg') top center no-repeat fixed;
     background-size:cover;
 }
-#central{
-    padding-bottom: 3.0em;
-    background-color: rgba(255,255,255,0.9);
-}
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
+}
+#central{
+    padding-bottom: 3.0em;
+    background-color: rgba(255,255,255,0.9);
 }

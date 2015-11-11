@@ -1,0 +1,131 @@
+<div id="central" class="container" ng-controller="Ctrladministrador">
+	
+	<nav class="navbar navbar-fixed-top navbar-inverse">
+		            
+			<div class="container">
+			     
+			     <div class="navbar-brand navbar-left">
+		    		<img src="Imagenes/icono.ico" width="70" height="70">
+		        </div>             
+			    <div class="navbar-brand">
+			         Sistema De Ventas Bienvenido 
+                     
+			    </div>
+			    <div class="collapse navbar-collapse navHeaderCollapse">
+                <ul class=" nav navbar-nav navbar-right">
+                    <li><a type="label" ng-model="usuario_user">
+                          <span class="glyphicon glyphicon-user"></span>{{var_user}}</a>
+                    </li>
+                    <li><a class="btn btn-link" type="button" ng-click="cerrar()">
+                          <span class="glyphicon glyphicon-home"></span> CERRAR SESI&Oacute;N </a>
+                    </li>
+                </ul>
+            </div>
+
+			</div>
+	</nav>
+	<div class="jumbotron">
+
+	</div>
+
+	<div >        
+        <div class="centro">
+            <div class="row">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1><center><b>MALIBU</b><br><h3>Tu Preferencia nos hace cada vez m&aacute;s Grandes</h3></br></center></h1>
+                        </div>
+                    </div>
+                    <div  class="row">
+                        <div class="col-md-12">
+                            <div class="img" id="slideShowImages">
+                                <img class="img-responsive" src="img/admin.jpg" alt="slide 6" />
+                            </div> 
+                        </div>
+                    </div>
+                </div> 
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-4" ng-show="flag">    
+                    <div class="row">   
+                        <div class="col-md-12">
+                            <div><h2>Nuevo Socio</h2><br>
+                            
+                            <form  class="form-horizontal" role="form" name="FRegistro" novalidate>
+                                <div class="form-group">
+                                    <div>
+                                        <input name="Rnombre" type="text" id="nombre" class="form-control " placeholder="Nombre" ng-model="registro.nombre" maxlength ="20" required>
+                                        <span style = "color:red" ng-show = "FRegistro.Rnombre.$dirty && FRegistro.Rnombre.$invalid">
+                                        <span ng-show = "FRegistro.Rnombre.$error.required">Nombre is required.</span></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div>
+                                        <input name="Apellidos" type="text" id="apellido" class="form-control" placeholder="Apellido" ng-model="registro.apellido" maxlength ="40" required>
+                                        <span style = "color:red" ng-show = "FRegistro.Apellidos.$dirty && FRegistro.Apellidos.$invalid">
+                                        <span ng-show = "FRegistro.Apellidos.$error.required">Apellido is required.</span></span>
+                                    
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div>
+                                        <input name="Dnis" type="number" id="dni" class="form-control" placeholder="Dni" ng-model="registro.dni" min="10000000" max="99999999" required>
+                                        <span style = "color:red" ng-show = "FRegistro.Dnis.$dirty && FRegistro.Dnis.$invalid">
+                                        <span ng-show = "FRegistro.Dnis.$error.required">Dni is required.</span></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div>
+                                       <input  name="Emails" type="email" id="email" class="form-control" placeholder="Email: example@email.com" ng-model="registro.email" maxlength ="30" required> 
+                                       <span style = "color:red" ng-show = "FRegistro.Emails.$dirty && FRegistro.Emails.$invalid">
+                                        <span ng-show = "FRegistro.Emails.$error.required">Email is required.</span></span>
+
+                                    </div>
+                                </div>  
+
+                                <div class="form-group">
+                                    <div>
+                                       <input  name="Teles" type="number" id="telefono" class="form-control" placeholder="Telefono min 9 digitos max 15" ng-model="registro.telefono"  min="100000000" max ="9999999999" required> 
+                                       <span style = "color:red" ng-show = "FRegistro.Teles.$dirty && FRegistro.Teles.$invalid">
+                                        <span ng-show = "FRegistro.Teles.$error.required">Telefono is required.</span></span>
+
+                                    </div>
+                                </div> 
+                                                               
+                                <button  class="btn btn-lg btn-primary " ng-click="reset()">Reset</button>
+                                <button  class="btn btn-lg btn-primary " 
+                                ng-disabled = "!FRegistro.$valid" ng-click="registro(registro)">Ingresar</button>
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4" ng-hide="flag">    
+                    <div class="row">   
+                        <div class="col-md-12" >
+                            <div id="tit">falta poco para terminar</div>
+                            <p><h1>Crear Usuario </h1></p>
+                            <form method="get" class="form-horizontal" role="form" name="Fregistrar">
+                                <input name="Usuario" type="text" id="usuario" class="form-control " placeholder="Usuario" ng-model="registro.user" minlength ="6" maxlength ="10" required><br>
+                                <input name="Password" type="password" id="password" class="form-control" placeholder="Password" ng-model="registro.pass" minlength ="6" maxlength ="10" required><br>
+                                <button class="btn btn-lg btn-primary" ng-disabled="!Fregistrar.$valid" ng-click="btnregistrar(registro)">Registrar</button>
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+	
+</div>

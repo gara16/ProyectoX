@@ -53,26 +53,12 @@
 							    <th class="col-md-2">PRECIO TOTAL</th>
 							    <th class="col-md-2"></th>
 						    </thead>
-						    <tbody id="verCarrito">
+						    <tbody ng-repeat="list in listaP | filter: busqueda">
 						    	<tr class='info'>
-									<td class='cant'>4</td>
 									<td class='producto'>Leche Gloria</td>
 									<td class='precioP'>S/. 3.50</td>
 									<td class='precioT'>S/. 14.00</td>
-									<td><img class='image img-responsive' src='img/borrar.png'></td>
-								</tr>
-								<tr class='info'>
-									<td class='cant'>4</td>
-									<td class='producto'>Leche Gloria</td>
-									<td class='precioP'>S/. 3.50</td>
-									<td class='precioT'>S/. 14.00</td>
-									<td><img class='image img-responsive' src='img/borrar.png'></td>
-								</tr>
-								<tr class='info'>
-									<td class='cant'>4</td>
-									<td class='producto'>Leche Gloria</td>
-									<td class='precioP'>S/. 3.50</td>
-									<td class='precioT'>S/. 14.00</td>
+									<td class='cant'><input name="cant" type="number"  class="form-control" id="canti" ng-model="cantidad" placeholder="unidad"></td>
 									<td><a type="button" class="btn btn-danger"  ng-click="eliminar(list)"><span class="glyphicon glyphicon-remove"></span>Eliminar</a></td>
 								</tr>
 					        </tbody>

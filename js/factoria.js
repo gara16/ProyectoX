@@ -8,11 +8,11 @@ app.factory('fadmin', function ($http) {
 		flistarM:function(){
 			return $http.get('cadmin/listarMedida');
 		},
-		fagregarP:function($valor){
-			return $http.post('cadmin/agregarProducto',JSON.stringify($valor));
-		},
 		flistarP:function(){
 			return $http.get('cadmin/listarProducto');
+		},
+		fagregarP:function($valor){
+			return $http.post('cadmin/agregarProducto',JSON.stringify($valor));
 		},
 		fbuscarP:function($valor){
 			return $http.post('cadmin/buscarProducto',JSON.stringify($valor));
@@ -23,9 +23,28 @@ app.factory('fadmin', function ($http) {
 		fmodificarP:function($valor){
 			return $http.post('cadmin/modificarProducto',JSON.stringify($valor));
 		},
+		flistarProveedor:function(){
+			return $http.get('cadmin/listarProveedor');
+		},
+		fagregarProveedor:function($valor){
+			return $http.post('cadmin/agregarProveedor',JSON.stringify($valor));
+		},
+		fbuscarProveedor:function($valor){
+			return $http.post('cadmin/buscarProveedor',JSON.stringify($valor));
+		},
+		feliminarProveedor:function($valor){
+			return $http.post('cadmin/eliminarProveedor',JSON.stringify($valor));
+		},
+		fmodificarProveedor:function($valor){
+			return $http.post('cadmin/modificarProveedor',JSON.stringify($valor));
+		},
 		factcerrar:function(){
 			return $http.post('clogin/logout');
+		},
+		factadministrador:function(valor){
+			return $http.post('clogin/agregarUsuario',JSON.stringify(valor));
 		}
+
 	};
 });
 

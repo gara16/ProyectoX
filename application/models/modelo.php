@@ -114,12 +114,12 @@ class Modelo extends CI_Model{
 		} else return false;
 	}
 	function listarProveedor(){
-		$datos=$this->db->select('nombre,apellidocompañia,img')
+		$datos=$this->db->select('idproveedor,nombre,apellido,direccion,compania,fono,dni,ruc')
 		->from('proveedor')->get()->result();
 		return $datos;
 	}
 	function buscarProveedor($idProveedor){
-		$dato=$this->db->select('nombre,apellido,direccion,compañia,fono,dni,ruc,img')
+		$dato=$this->db->select('nombre,apellido,direccion,compania,fono,dni,ruc')
 		->from('proveedor')->where('idproveedor',$idProveedor)->get()->result();
 		return $dato;
 	}

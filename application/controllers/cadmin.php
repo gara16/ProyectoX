@@ -107,7 +107,7 @@ class Cadmin extends CI_Controller{
 		$fono=$this->input->post('fono');
 		$dni=$this->input->post('dni');
 		$ruc=$this->input->post('ruc');
-		$datos=array('nombre'=>$nombre,'apellido'=>$apellido,'direccion'=>$address,'compañia'=>$compania,'fono'=>$fono,'dni'=>$dni,'ruc'=>$ruc,'estado'=>'1');
+		$datos=array('nombre'=>$nombre,'apellido'=>$apellido,'direccion'=>$address,'compania'=>$compania,'fono'=>$fono,'dni'=>$dni,'ruc'=>$ruc,'estado'=>'1');
 		return $array;
 	}
 	function validarDatosProv(){
@@ -119,6 +119,7 @@ class Cadmin extends CI_Controller{
 		$this->form_validation->set_rules('dni', 'DNI', 'trim|required|min_length[8]|max_length[8]|is_natural|xss_clean');
 		$this->form_validation->set_rules('ruc', 'RUC', 'trim|required|xss_clean|min_length[11]|max_length[11]|is_natural');
 	}
+
 	function agregarProveedor(){
 		$array=$this->capturaDatosProv();
 		$this->validarDatosProv();

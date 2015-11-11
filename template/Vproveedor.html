@@ -1,0 +1,153 @@
+<div id="central" class="container" ng-controller="Ctrlproveedor">
+	
+	<nav class="navbar navbar-fixed-top navbar-inverse">
+		            
+			<div class="container">
+			     
+			     <div class="navbar-brand navbar-left">
+		    		<img src="Imagenes/icono.ico" width="70" height="70">
+		        </div>             
+			    <div class="navbar-brand">
+			         Sistema De Ventas Bienvenido 
+                     
+			    </div>
+			    <div class="collapse navbar-collapse navHeaderCollapse">
+                <ul class=" nav navbar-nav navbar-right">
+                    <li><a type="label" ng-model="usuario_user">
+                          <span class="glyphicon glyphicon-user"></span>{{var_user}}</a>
+                    </li>
+                    <li><a class="btn btn-link" type="button" ng-click="cerrar()">
+                          <span class="glyphicon glyphicon-home"></span> CERRAR SESI&Oacute;N </a>
+                    </li>
+                </ul>
+            </div>
+
+			</div>
+	</nav>
+	<div class="jumbotron">
+
+	</div>
+
+	<form class="form-horizontal" role="form" name="FProveedor"  novalidate>
+        <h1>Ingresar Nuevo Producto</h1>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="Nombre">Nombre:</label>
+          <div class="col-sm-4">
+            <input name="Nombres" type="text"  class="form-control" id="nombre" ng-model="proveedor.nombre" placeholder="Ingresar Nombre" maxlength ="25" required>
+            <span style = "color:red" ng-show = "FProveedor.Nombres.$dirty && FProveedor.Nombres.$invalid">
+            <span ng-show = "FProveedor.Nombres.$error.required">Nombre is required.</span>
+            </span>
+         </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="Apellido">Apellido:</label>
+          <div class="col-sm-4">
+            <input name="Apellidos" type="text"  class="form-control" id="apellido" ng-model="proveedor.apellido" placeholder="Ingresar Apellido" maxlength ="25" required>
+            <span style = "color:red" ng-show = "FProveedor.Apellidos.$dirty && FProveedor.Apellidos.$invalid">
+            <span ng-show = "FProveedor.Apellidos.$error.required">Apellido is required.</span>
+            </span>
+         </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="Direccion">Direccion:</label>
+          <div class="col-sm-4">
+            <input name="Addresss" type="text"  class="form-control" id="address" ng-model="proveedor.direccion" placeholder="Ingresar Direccion" maxlength ="40" required>
+            <span style = "color:red" ng-show = "FProveedor.Addresss.$dirty && FProveedor.Addresss.$invalid">
+            <span ng-show = "FProveedor.Addresss.$error.required">Direccion is required.</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="Compania">Compañia:</label>
+          <div class="col-sm-4">
+            <input name="Companias" type="text"  class="form-control" id="compania" ng-model="proveedor.compania" placeholder="Nombre de la Empresa" maxlength ="20" required>
+            <span style = "color:red" ng-show = "FProveedor.Companias.$dirty && FProveedor.Companias.$invalid">
+            <span ng-show = "FProveedor.Companias.$error.required">Compañia is required.</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="Telefonoo">Telefono:</label>
+          <div class="col-sm-4">
+            <input name="Fonos" type="text"   class="form-control" id="fono" ng-model="proveedor.fono" placeholder="Telefono" min="100000000" max="999999999" required>
+            <span style = "color:red" ng-show = "FProveedor.Fonos.$dirty && FProveedor.Fonos.$invalid">
+            <span ng-show = "FProveedor.Fonos.$error.required">Telefono is required.</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="Dnni">Dni:</label>
+            <div class="col-sm-4">
+                <input name="Dnis" type="text" class="form-control" id="dni" ng-model="proveedor.dni" placeholder="Dni"  min="10000000" max="99999999" required>
+                <span style = "color:red" ng-show = "FProveedor.Dnis.$dirty && FProveedor.Dnis.$invalid">
+                <span ng-show = "FProveedor.Dnis.$error.required">Dni is required.</span>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="Rucc">Ruc:</label>
+            <div class="col-sm-4">
+                <input name="Rucs" type="text" class="form-control" id="ruc" ng-model="proveedor.ruc" placeholder="Ruc" min="1000000000" max="9999999999" required>
+                <span style = "color:red" ng-show = "FProveedor.Rucs.$dirty && FProveedor.Rucs.$invalid">
+                <span ng-show = "FProveedor.Rucs.$error.required">Ruc is required.</span>
+                </span>
+            </div>
+        </div>
+                
+        <div class="form-group">        
+          <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-default btn-primary" type="button" ng-click="reset()"><span class="glyphicon glyphicon-repeat"></span>Reset </button>
+            <button class="btn btn-default btn-primary"  ng-disabled = "FProveedor.Nombres.$dirty && FProveedor.Nombres.$invalid || FProveedor.Apellidos.$dirty && FProveedor.Apellidos.$invalid || FProveedor.Addresss.$dirty && FProveedor.Addresss.$invalid || FProveedor.Companias$dirty && FProveedor.Companias.$invalid || FProveedor.Fonos.$dirty && FProveedor.Fonos.$invalid || FProveedor.Dnis.$dirty && FProveedor.Dnis.$invalid || FProveedor.Rucs.$dirty && FProveedor.Rucs.$invalid " ng-click="submit()"><span class="glyphicon glyphicon-floppy-saved"></span>Guardar Datos</button>
+          </div>
+        </div>
+
+    </form>
+    
+                
+    <div class="table table-bordered" >
+        <div class="form-group">
+             <div class="col-sm-4">
+                <h1>Lista de Productos</h1>
+                <input type="search"  class="form-control" ng-model="busqueda" placeholder="Buscar Producto"><br>
+             </div>
+        </div>
+        <table ata-toggle="table" class="table table-bordered table-striped table-hover m-tabla tabla-web" fixed-tabla>
+            <tr >
+                <td style="text-align: center;">Nombre Proveedor </td>
+                <td style="text-align: center;">Apellido Proveedor </td>
+                <td style="text-align: center;">Direccion Proveedor </td>
+                <td style="text-align: center;">Empresa Proveedor </td>
+                <td style="text-align: center;">Telefono Proveedor </td>
+                <td style="text-align: center;">Dni Proveedor </td>
+                <td style="text-align: center;">Ruc Proveedor </td>
+                <td style="text-align: center;" colspan="3">Operaciones</td>
+                
+            </tr>   
+            <tr   ng-repeat="list in listaP | filter: busqueda">
+                <td style="text-align: center;">{{list.nombre}}</td>
+                <td style="text-align: center;">{{list.apellido}}</td>
+                <td style="text-align: center;">{{list.direccion}}</td>
+                <td style="text-align: center;">{{list.compania}}</td>
+                <td style="text-align: center;">{{list.fono}}</td>
+                <td style="text-align: center;">{{list.dni}}</td>
+                <td style="text-align: center;">{{list.ruc}}</td>
+                <td style="text-align: center;">        
+                        <button type="button" class="btn btn-primary"  ng-click="modificar(list)"><span class="glyphicon glyphicon-pencil"></span>Modificar</button>
+                </td>
+                <td style="text-align: center;">
+                        <a type="button" class="btn btn-danger"  ng-click="eliminar(list)"><span class="glyphicon glyphicon-remove"></span>Eliminar</a>
+
+                </td>
+            </tr>   
+        </table>    
+    </div>
+    
+
+	
+</div>

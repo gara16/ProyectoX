@@ -13,10 +13,10 @@
 		     	
 		    <div class="collapse navbar-collapse navHeaderCollapse">
 			    <ul class=" nav navbar-nav navbar-right">
-			        <li><a class="btn btn-link" type="button" ng-click="agregarAdmin">
+			        <li><a class="btn btn-link" type="button" ng-click="btnadmin()">
 			              <span class="glyphicon glyphicon-fire"></span>Agregar Administrador</a>
 			        </li>
-			        <li><a class="btn btn-link" type="button" ng-click="agregarProvee">
+			        <li><a class="btn btn-link" type="button" ng-click="btnprov()">
 			              <span class="glyphicon glyphicon-fire"></span>Agregar Proveedor</a>
 			        </li>
 			        <li><a type="label" ng-model="usuario_user">
@@ -36,9 +36,8 @@
 
 	</div>
 	
-	<h1><font color="white">Ingresar Nuevo Producto</h1>
 	<form class="form-horizontal" role="form" name="Aproducto"  novalidate>
-		
+		<h1><font color="white">Ingresar Nuevo Producto</h1>
 		<div class="form-group">
 	      <label class="control-label col-sm-2" for="nombre">Nombre:</label>
 	      <div class="col-sm-4">
@@ -52,7 +51,7 @@
 	    <div class="form-group">
 	      <label class="control-label col-sm-2" for="Precio1">Precio:</label>
 	      <div class="col-sm-4">
-	        <input name="Precios1" type="number"  class="form-control" id="precio1" ng-model="producto.precio" placeholder="Ingresar Precio 00.0" required>
+	        <input name="Precios1" type="text"  class="form-control" id="precio1" ng-model="producto.precio" placeholder="Ingresar Precio 00.0" required>
 	        <span style = "color:red" ng-show = "Aproducto.Precios1.$dirty && Aproducto.Precios1.$invalid">
             <span ng-show = "Aproducto.Precios1.$error.required">Precio is required.</span>
          	</span>
@@ -62,7 +61,7 @@
 	    <div class="form-group">
 	      <label class="control-label col-sm-2" for="Stock">Stock:</label>
 	      <div class="col-sm-4">
-	        <input name="Stocks" type="number"  class="form-control" id="stock" ng-model="producto.stock" placeholder="Ingresar stock kilo,litro,unidad" required>
+	        <input name="Stocks" type="text"  class="form-control" id="stock" ng-model="producto.stock" placeholder="Ingresar stock kilo,litro,unidad" required>
 			<span style = "color:red" ng-show = "Aproducto.Stocks.$dirty && Aproducto.Stocks.$invalid">
             <span ng-show = "Aproducto.Stocks.$error.required">Stock is required.</span>
          	</span>
@@ -103,11 +102,11 @@
 	</form>
 	
 				
-	<div class="table table-bordered">
+	<div class="table table-bordered" >
 		<div class="form-group">
 		     <div class="col-sm-4">
 		     	<h1>Lista de Productos<font color="black" size="4"></h1>
-		        <input type="search"  class="form-control" ng-model="busqueda"   placeholder="Buscar Producto"><br>
+		        <input type="search"  class="form-control" ng-model="busqueda" placeholder="Buscar Producto">
 		     </div>
 		</div>
 		<table ata-toggle="table" class="table table-bordered table-striped table-hover m-tabla tabla-web" fixed-tabla>
@@ -135,4 +134,5 @@
 			</tr>	
 	    </table>	
 	</div>
+
 </div>

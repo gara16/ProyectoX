@@ -20,6 +20,16 @@ app.controller('Ctrladmin',['$scope',"$rootScope",'$http','$location','fadmin',f
 			$scope.mensaje=a.error;
 	});
 
+	$scope.btnadmin=function(){
+		
+		$location.path('/Vadministrador');
+	};
+
+	$scope.btnprov=function(){
+		
+		$location.path('/Vproveedor');
+
+	};
 
 	$scope.submit = function(id){
 		if ($scope.flag) {
@@ -32,7 +42,7 @@ app.controller('Ctrladmin',['$scope',"$rootScope",'$http','$location','fadmin',f
 
 		}else{
 			$scope.producto[0]=$scope.id;
-			console.log($scope.producto)
+			
 			fadmin.fmodificarP($scope.producto).success(function(a){
 			alert(a.respuesta)
 			}).error(function(b) {

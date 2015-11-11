@@ -18,10 +18,19 @@ app.config(function($routeProvider){
     templateUrl: 'template/Vboleta.html',
     controller: 'Ctrlboleta'
   })
+  .when('/Vadministrador', {
+    templateUrl: 'template/Vadministrador.html',
+    controller: 'Ctrladministrador'
+  })
+  .when('/Vproveedor', {
+    templateUrl: 'template/Vproveedor.html',
+    controller: 'Ctrlproveedor'
+  })
 	.otherwise({
 		redirectTo: '/'
 	});
 });
+
 app.run(['$rootScope','$location','factuser', function($rootScope,$location,factuser){
      $rootScope.$on('$routeChangeStart', function( event, route)
      {
