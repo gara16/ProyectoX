@@ -73,7 +73,7 @@
         <div class="form-group">
           <label class="control-label col-sm-2" for="Telefonoo">Telefono:</label>
           <div class="col-sm-4">
-            <input name="Fonos" type="text"   class="form-control" id="fono" ng-model="proveedor.fono" placeholder="Telefono" min="100000000" max="999999999" required>
+            <input name="Fonos" type="text"   class="form-control" id="fono" ng-model="proveedor.fono" placeholder="Telefono"  maxlength="12" required>
             <span style = "color:red" ng-show = "FProveedor.Fonos.$dirty && FProveedor.Fonos.$invalid">
             <span ng-show = "FProveedor.Fonos.$error.required">Telefono is required.</span>
             </span>
@@ -83,7 +83,7 @@
         <div class="form-group">
             <label class="control-label col-sm-2" for="Dnni">Dni:</label>
             <div class="col-sm-4">
-                <input name="Dnis" type="text" class="form-control" id="dni" ng-model="proveedor.dni" placeholder="Dni"  min="10000000" max="99999999" required>
+                <input name="Dnis" type="text" class="form-control" id="dni" ng-model="proveedor.dni" placeholder="Dni"  maxlength="8" required>
                 <span style = "color:red" ng-show = "FProveedor.Dnis.$dirty && FProveedor.Dnis.$invalid">
                 <span ng-show = "FProveedor.Dnis.$error.required">Dni is required.</span>
                 </span>
@@ -93,7 +93,7 @@
         <div class="form-group">
             <label class="control-label col-sm-2" for="Rucc">Ruc:</label>
             <div class="col-sm-4">
-                <input name="Rucs" type="text" class="form-control" id="ruc" ng-model="proveedor.ruc" placeholder="Ruc" min="1000000000" max="9999999999" required>
+                <input name="Rucs" type="text" class="form-control" id="ruc" ng-model="proveedor.ruc" placeholder="Ruc" maxlength="11" required>
                 <span style = "color:red" ng-show = "FProveedor.Rucs.$dirty && FProveedor.Rucs.$invalid">
                 <span ng-show = "FProveedor.Rucs.$error.required">Ruc is required.</span>
                 </span>
@@ -103,7 +103,7 @@
         <div class="form-group">        
           <div class="col-sm-offset-2 col-sm-10">
             <button class="btn btn-default btn-primary" type="button" ng-click="reset()"><span class="glyphicon glyphicon-repeat"></span>Reset </button>
-            <button class="btn btn-default btn-primary"  ng-disabled = "FProveedor.Nombres.$dirty && FProveedor.Nombres.$invalid || FProveedor.Apellidos.$dirty && FProveedor.Apellidos.$invalid || FProveedor.Addresss.$dirty && FProveedor.Addresss.$invalid || FProveedor.Companias$dirty && FProveedor.Companias.$invalid || FProveedor.Fonos.$dirty && FProveedor.Fonos.$invalid || FProveedor.Dnis.$dirty && FProveedor.Dnis.$invalid || FProveedor.Rucs.$dirty && FProveedor.Rucs.$invalid " ng-click="submit()"><span class="glyphicon glyphicon-floppy-saved"></span>Guardar Datos</button>
+            <button class="btn btn-default btn-primary"  ng-disabled = "!FProveedor.$valid" ng-click="submit()"><span class="glyphicon glyphicon-floppy-saved"></span>Guardar Datos</button>
           </div>
         </div>
 

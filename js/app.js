@@ -1,4 +1,8 @@
-var app = angular.module('SVentas',['ngRoute']);
+var app = angular.module('SVentas',['ngRoute','LocalStorageModule']);
+
+app.config(['localStorageServiceProvider',function(localStorageServiceProvider){
+    localStorageServiceProvider.setPrefix('ls');
+}]);
 
 app.config(function($routeProvider){
 	$routeProvider
@@ -14,10 +18,6 @@ app.config(function($routeProvider){
 		templateUrl: 'template/Vventas.html',
 		controller: 'Ctrlventa'
 	})
-  .when('/Vboleta', {
-    templateUrl: 'template/Vboleta.html',
-    controller: 'Ctrlboleta'
-  })
   .when('/Vadministrador', {
     templateUrl: 'template/Vadministrador.html',
     controller: 'Ctrladministrador'
@@ -31,11 +31,13 @@ app.config(function($routeProvider){
 	});
 });
 
+
 app.run(['$rootScope','$location','factuser', function($rootScope,$location,factuser){
      $rootScope.$on('$routeChangeStart', function( event, route)
      {
       factuser.sessionUsuario().success(function(data){
       	$rootScope.var_user=data.user;
+   //     $rootScope.ArrayBoleta = [];
       	console.log(data.user);
       	if(data.estado){
          	if(route.templateUrl=='template/Login.html'){

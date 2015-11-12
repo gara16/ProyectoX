@@ -92,11 +92,7 @@
 		    <div class="form-group">        
 		      <div class="col-sm-offset-2 col-sm-10">
 		        <button class="btn btn-default btn-primary" type="button" ng-click="reset()"><span class="glyphicon glyphicon-repeat"></span>Reset </button>
-				<button class="btn btn-default btn-primary"  ng-disabled = "Aproducto.Nombres.$dirty &&
-                Aproducto.Nombres.$invalid || Aproducto.Precios.$dirty &&
-                Aproducto.Precios.$invalid || Aproducto.Medidas.$dirty &&
-                Aproducto.Medidas.$invalid || Aproducto.Tipos.$dirty &&
-                Aproducto.Tipos.$invalid" ng-click="submit()"><span class="glyphicon glyphicon-floppy-saved"></span>Guardar Datos</button>
+				<button class="btn btn-default btn-primary"  ng-disabled = "!Aproducto.$valid" ng-click="submit()"><span class="glyphicon glyphicon-floppy-saved"></span>Guardar Datos</button>
 		      </div>
 		    </div>
 	</form>

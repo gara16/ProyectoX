@@ -13,8 +13,7 @@ app.controller('Ctrlproveedor',['$scope','$rootScope','$location','$http','fadmi
 	$scope.submit = function(){
 		if ($scope.flag) {
 			fadmin.fagregarProveedor($scope.proveedor).success(function(a){
-			if (a.error!=null) { alert(a.error)}
-			else alert(a.dato);
+				 alert(a);
 			}).error(function(b) {
 				alert(b);
 			});
@@ -23,7 +22,7 @@ app.controller('Ctrlproveedor',['$scope','$rootScope','$location','$http','fadmi
 			$scope.proveedor[0]=$scope.id;
 			
 			fadmin.fmodificarProveedor($scope.proveedor).success(function(a){
-			alert(a.respuesta)
+			alert(a)
 			}).error(function(b) {
 				alert(b);
 			});
