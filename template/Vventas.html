@@ -17,6 +17,9 @@
 			    	<li><a type="label" ng-model="usuario_user">
 			              <span class="glyphicon glyphicon-user"></span>{{var_user}}</a>
 			        </li>
+			        <li><a class="btn btn-link" type="button" ng-click="menu()">
+			              <span class="glyphicon glyphicon-shopping-cart"></span> MENU PRODUCTOS </a>
+			          </li>
 			    	<li><a class="btn btn-link" type="button" ng-click="carrito()">
 			              <span class="glyphicon glyphicon-shopping-cart"></span> VER CARRITO </a>
 			          </li>
@@ -35,77 +38,125 @@
 
 	</div>
 
-	<div class="container">
-	<div class="col-md-1"></div>
-	<div id="centro" class="col-md-10">
-		<!--Primera fila-->
-		<div id="portada" class="row">
-			<div class="col-md-2">
-				<div id="logo">
-					<img class="img-responsive" src="img/logo.png">
+	<div class="container" ng-show="flag">
+		<div class="col-md-1"></div>
+		<div id="centro" class="col-md-10">
+			<!--Primera fila-->
+			<div id="portada" class="row">
+				<div class="col-md-2">
+					<div id="logo">
+						<img class="img-responsive" src="img/logo.png">
+					</div>
 				</div>
-			</div>
-			<div class="col-md-8">
-				<p id="name"><marquee>M A L I B U</marquee></p>
-				<p id="lemaE">Tu Preferencia nos hace cada vez m&aacute;s Grandes</p>
-			</div>
-			
-		</div>
-
-		<div class="container">
-			<ul class="nav nav-pills">
-			    <li><a type="button" class="btn btn-primary" ng-click="b">Home</a></li>
-			    <li><a type="button" class="btn btn-primary" ng-click="a">Menu 1</a></li>
-			    <li><a type="button" class="btn btn-primary">Menu 2</a></li>
-			    <li><a type="button" class="btn btn-primary">Menu 3</a></li>
-			<applet></applet>
-			</ul>
-
-		</div>
-
-		<!--Segunda fila-->
-		<div class="col-sm-8">
-				     	<h1>Lista de Productos</h1>
-				        <input type="search"  class="form-control" ng-model="busqueda"   placeholder="Buscar Producto"><br>
-		s</div>
-		<div class="row">
-
-			<div class="col-md-12 col-sm-12">
+				<div class="col-md-8">
+					<p id="name"><marquee>M A L I B U</marquee></p>
+					<p id="lemaE">Tu Preferencia nos hace cada vez m&aacute;s Grandes</p>
+				</div>
 				
-				<div id="prod" class="row">
-					<!--listar producto-->
-					<div  ng-repeat="prod in Lprod | filter: busqueda">
-						<div class='producto col-md-3 col-sm-12 col-xs-12'>
-							<div id='cajita'>
-								<form  class='addCarrito'>
-									<div class='row'>
-										<div class='imagenF col-md-12 col-sm-12'>
-											<center><img class='img-responsive' src='img/gloria.png'></center>
-										</div>
-									</div>
-									<div class='row'>
-										<div class='col-md-12 col-sm-12 col-xs-12'>
-											<p>{{prod.nombreprod}}</p>
-											<p>{{prod.precio | currency: $ }}</p>
-											<p>{{prod.stock }}</p>
-										</div>
-									</div>
-									<div>
-										<a type="button" class="btn btn-primary" ng-click="addcarrito"><span class="glyphicon glyphicon-download-alt"></span> Agregar al Carrito</a>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>	
-
-				</div>
 			</div>
 
+			<div class="container">
+				<ul class="nav nav-pills">
+				    <li><a type="button" class="btn btn-primary" ng-click="b">Home</a></li>
+				    <li><a type="button" class="btn btn-primary" ng-click="a">Menu 1</a></li>
+				    <li><a type="button" class="btn btn-primary">Menu 2</a></li>
+				    <li><a type="button" class="btn btn-primary">Menu 3</a></li>
+				<applet></applet>
+				</ul>
+
+			</div>
+
+			<!--Segunda fila-->
+			<div class="col-sm-8">
+					     	<h1>Lista de Productos</h1>
+					        <input type="search"  class="form-control" ng-model="busqueda"   placeholder="Buscar Producto"><br>
+			</div>
+			<div class="row">
+
+				<div class="col-md-12 col-sm-12">
+					
+					<div id="prod" class="row">
+						<!--listar producto-->
+						<div  ng-repeat="prod in Lprod | filter: busqueda">
+							<div class='producto col-md-3 col-sm-12 col-xs-12'>
+								<div id='cajita'>
+									<form  class='addCarrito'>
+										<div class='row'>
+											<div class='imagenF col-md-12 col-sm-12'>
+												<center><img class='img-responsive' src='img/gloria.png'></center>
+											</div>
+										</div>
+										<div class='row'>
+											<div class='col-md-12 col-sm-12 col-xs-12'>
+												<p>{{prod.nombreprod}}</p>
+												<p>{{prod.precio | currency: $ }}</p>
+												<p>{{prod.stock }}</p>
+											</div>
+										</div>
+										<div>
+											<a type="button" class="btn btn-primary" ng-click="addcarrito(prod)"><span class="glyphicon glyphicon-download-alt"></span> Agregar al Carrito</a>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>	
+
+					</div>
+				</div>
+
+			</div>
 		</div>
+	</div>	
+
+	<div class="container" ng-hide="flag">
+		<div class="col-md-1"></div>
+		<div id="centro" class="col-md-10">
+			<!--Primera fila-->
+			<div id="titulo" class="row">
+				<p>Boleta de Venta</p>
+			</div>
+			<div id="borde">
+				<div id="usuario" class="row">
+					<label>Usuario : </label> {{var_user}}
+				</div>
+
+				<!--segunda fila: tabla -->
+				<div class="row">
+					<form id="realizarCompra">
+						<table class="table table-responsive table-hover">
+							<thead class="row">
+								<th class="col-md-1">PRODUCTO</th>
+							    <th class="col-md-2">PRECIO UNIDAD</th>
+							    <th class="col-md-2">PRECIO TOTAL</th>
+							    <th class="col-md-2">CANTIDAD</th>
+							    <th class="col-md-2"></th>
+						    </thead>
+						    <tbody ng-repeat="list in ArrayBoleta | filter: busqueda">
+						    	<tr class='info'>
+									<td >{{list.nombreprod}}</td>
+									<td >{{list.precio | currency: $ }}</td>
+									<td >{{list.precio * cantidad | number: 2}}</td>
+									<td class="col-md-2"><input name="cant" type="number"  class="form-control" id="canti" ng-model="cantidad" placeholder="unidad"></td>
+									<td><a type="button" class="btn btn-danger"  ng-click="eliminar(list)"><span class="glyphicon glyphicon-remove"></span>Eliminar</a></td>
+								</tr>
+					        </tbody>
+						</table>
+						<div id="footerPrecio">
+							<div id="precio">
+								{{PrecioT|currency: $}}
+							</div>
+						    <input type="submit" class="btn btn-primary" value="Realizar Compra"/>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-1"></div>
 	</div>
-	<div class="col-md-1"></div>
+
+	<div class="col-md-3"></div>
 	</div>
-	<footer>
+	<footer class="container">
 		<div class="row">
 			<div id="footer" class="col-md-12">
 				<p>Negocios Malibu</p>

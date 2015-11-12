@@ -102,20 +102,20 @@ class Cadmin extends CI_Controller{
 		$_POST=json_decode(file_get_contents('php://input'),TRUE);
 		$nombre=$this->input->post('nombre');
 		$apellido=$this->input->post('apellido');
-		$address=$this->input->post('address');
+		$direccion=$this->input->post('direccion');
 		$compania=$this->input->post('compania');
 		$fono=$this->input->post('fono');
 		$dni=$this->input->post('dni');
 		$ruc=$this->input->post('ruc');
-		$datos=array('nombre'=>$nombre,'apellido'=>$apellido,'direccion'=>$address,'compania'=>$compania,'fono'=>$fono,'dni'=>$dni,'ruc'=>$ruc,'estado'=>'1');
-		return $array;
+		$datos=array('nombre'=>$nombre,'apellido'=>$apellido,'direccion'=>$direccion,'compania'=>$compania,'fono'=>$fono,'dni'=>$dni,'ruc'=>$ruc,'estado'=>'1');
+		return $datos;
 	}
 	function validarDatosProv(){
 		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|min_length[3]|max_length[25]|xss_clean');
 		$this->form_validation->set_rules('apellido', 'Apellido', 'trim|required|min_length[3]|max_length[25]|xss_clean');
-		$this->form_validation->set_rules('address', 'Direccion', 'trim|required|min_length[5]|max_length[40]|xss_clean');
+		$this->form_validation->set_rules('direccion', 'Direccion', 'trim|required|min_length[5]|max_length[40]|xss_clean');
 		$this->form_validation->set_rules('compania', 'Compañia', 'trim|required|min_length[5]|max_length[20]|xss_clean');
-		$this->form_validation->set_rules('fono', 'Fono', 'trim|required|is_natural|xss_clean|max_length[9]');
+		$this->form_validation->set_rules('fono', 'Fono', 'trim|required|min_length[9]|max_length[15]|xss_clean');
 		$this->form_validation->set_rules('dni', 'DNI', 'trim|required|min_length[8]|max_length[8]|is_natural|xss_clean');
 		$this->form_validation->set_rules('ruc', 'RUC', 'trim|required|xss_clean|min_length[11]|max_length[11]|is_natural');
 	}
@@ -125,9 +125,10 @@ class Cadmin extends CI_Controller{
 		$this->validarDatosProv();
 		if($this->form_validation->run()!=FALSE){
 			if ($this->modelo->agregarProveedor($array)){
-				echo json_encode(array("respuesta" => "El proveedor fue registrado con éxito"));
-            } else echo json_encode(array("respuesta" => "Hubo un error al registrar el proveedor"));
-		} else echo json_encode(array("respuesta" => "Los datos proporcionados son erróneos"));
+				$respuesta ="El proveedor fue registrado con exito";
+            } else $respuesta = "Hubo un error al registrar el proveedor";
+		} else $respuesta = "Los datos proporcionados son erroneos";
+		 echo json_encode($respuesta);	
 	}
 	function listarProveedor(){
 		$array = $this->modelo->listarProveedor();
@@ -141,9 +142,10 @@ class Cadmin extends CI_Controller{
 		if($this->form_validation->run()!=FALSE){
 			$id=$this->input->post('0');
 			if ($this->modelo->modificarProveedor($id,$array)) {
-				echo json_encode(array("respuesta" => "El proveedor fue modificado con éxito"));
-			} else echo json_encode(array("respuesta" => "Hubo un error al modificar el proveedor"));
-		} else echo json_encode(array("respuesta" => "Los datos proporcionados son erróneos"));
+				$respuesta ="El proveedor fue modificado con exito";
+            } else $respuesta = "Hubo un error al modificar el proveedor";
+		} else $respuesta = "Los datos proporcionados son erroneos";
+		 echo json_encode($respuesta);	
 	}
 	function eliminarProveedor(){
 		$_POST=json_decode(file_get_contents('php://input'),TRUE);
