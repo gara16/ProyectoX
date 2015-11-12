@@ -163,5 +163,67 @@ class Cadmin extends CI_Controller{
 		else $valor['error']="No Existe Proveedor";
 		echo json_encode($valor);
 	}
+
+	/*Las funciones que vienen a continuacion nos serviran para realizar operaciones 
+	con lo que respecta a la entidad usuario de tipo administrador*/
+	function validarDatosUser(){
+		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|min_length[3]|max_length[20]|xss_clean');
+		$this->form_validation->set_rules('apellido', 'Apellido', 'trim|required|min_length[3]|max_length[20]|xss_clean');
+		$this->form_validation->set_rules('dni', 'DNI', 'trim|required|min_length[8]|max_length[8]|is_natural|xss_clean');
+		$this->form_validation->set_rules('email', 'email', 'trim|required|valid_email');
+		$this->form_validation->set_rules('telefono', 'Fono', 'trim|required|min_length[9]|max_length[10]|is_natural|xss_clean');
+		$this->form_validation->set_rules('user', 'usuario', 'trim|required|alpha_numeric|xss_clean|min_length[6]|max_length[15]');
+		$this->form_validation->set_rules('pass', 'usuario', 'trim|required|xss_clean|min_length[6]|max_length[20]');
+	}
+	function agregarAdministrador(){
+		$_POST=json_decode(file_get_contents('php://input'),TRUE);
+		$nombre=$this->input->post('nombre');
+		$apellido=$this->input->post('apellido');
+		$dni=$this->input->post('dni');
+		$email=$this->input->post('email');
+		$fono=$this->input->post('telefono');
+		$usuario=$this->input->post('user');
+		$password=$this->input->post('pass');
+		$this->validarDatosUser();
+		if($this->form_validation->run()!=FALSE){
+			if ($this->modelo->existeUsuario($usuario)==null) {
+				$Ausuario=array('usuario'=>$usuario,'password'=>$password,'idtipousuario'=>'1');
+				$iduser=$this->modelo->agregarUsuario($Ausuario);
+				if ($iduser!=null) {
+					settype($iduser["0"], "array");
+					$Adatos=array('nombre'=>$nombre,'apellido'=>$apellido,'dni'=>$dni,'email'=>$email,'fono'=>$fono,'idusuario'=>$iduser["0"]["idusuario"]);
+					if ($this->modelo->agregarDatos($Adatos)) {
+						$mensaje['data']="El Administrador fue agregado con éxito";
+					} else $mensaje['error']="El Administrador fue registrado pero no los datos, Por favor Actualize sus datos";
+				} else $mensaje['error']="Ocurrió un error al intentar registrar al Administrador";
+			} else $mensaje['error']="Eliga otro Administrador, el que proporciona ya se encuentra registrado";
+		} else $mensaje['error']="Los datos proporcionados son incorrectos";
+		echo json_encode($mensaje);
+	}
+	function listarAdministrador(){
+		$datos=$this->modelo->listarUsuario('1');
+		if (count($datos)>0) $valor['lista']=$datos;
+		else $valor['error']="No hay Administradores";
+		echo json_encode($valor);
+	}
+	function ActualizarAdministrador(){
+		$_POST=json_decode(file_get_contents('php://input'),TRUE);
+		$nombre=$this->input->post('nombre');
+		$apellido=$this->input->post('apellido');
+		$dni=$this->input->post('dni');
+		$email=$this->input->post('email');
+		$fono=$this->input->post('telefono');
+		$usuario=$this->input->post('user');
+		$password=$this->input->post('pass');
+		$idUsuario=$this->input->post('id');
+		$this->validarDatosUser();
+		if($this->form_validation->run()!=FALSE){
+		$newDatos=array('nombre'=>$nombre,'apellido'=>$apellido,'dni'=>$dni,'email'=>$email,'fono'=>$fono);
+			if ($this->modelo->modificarDatos($idUsuario,$newDatos)) {
+				$mensaje['data']="Los datos fueron modificados con éxito";
+			} else $mensaje['error']="Ocurrió un error al intentar actualizar sus datos";
+		} else $mensaje['error']="Los datos proporcionados son incorrectos";
+		echo json_encode($mensaje);
+	}
 }
 ?>		

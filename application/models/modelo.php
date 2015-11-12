@@ -91,13 +91,20 @@ class Modelo extends CI_Model{
 		} else return false;
 	}
 
+	function modificarDatos($idUsuario,$newDatos){
+		$this->db->where('idusuario',$idUsuario);
+		if ($this->db->update('datos',$newDatos)) {
+			return true;
+		} else return false;
+	}
+
 	function listarUsuario($tipoUser){
-		$datos=$this->db->select('d.nombre','d.apellido','d.dni','d,email','d.img')
+		$datos=$this->db->select('d.nombre,d.apellido,d.dni,d.email,d.img')
 		->from('datos d')
-		->join('usuario u','u.iddatos=d.iddatos')
+		->join('usuario u','u.idusuario=d.idusuario')
 		->join('tipousuario tuser','tuser.tipousuario=u.idtipousuario')
 		->where('idtipousuario',$tipoUser)
-		->get->result();
+		->get()->result();
 		return $datos;
 	}
 	

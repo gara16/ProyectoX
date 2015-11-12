@@ -15,8 +15,8 @@ class Clogin extends CI_Controller{
 		$this->load->view('index.html');
 	}
 	function validarDatosLogueo(){
-		$this->form_validation->set_rules('usuario', 'Usuario', 'trim|required|max_length[15]|xss_clean');
-		$this->form_validation->set_rules('password', 'Password', 'trim|required|max_length[20]|xss_clean');
+		$this->form_validation->set_rules('usuario', 'Usuario', 'trim|required|alpha_numeric|xss_clean|min_length[6]|max_length[15]');
+		$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|min_length[6]|max_length[20]');
 	}
 	function loguear(){
 		$_POST=json_decode(file_get_contents('php://input'),TRUE);
