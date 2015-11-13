@@ -17,9 +17,12 @@ class Modelo extends CI_Model{
 	}
 	function listarProducto(){
 		$datos=$this->db->select('idproducto,nombreprod,precio,stock,img')
-						->from('producto')
-						->where('estado','1')
-						->get()->result();
+			->from('producto')->where('estado','1')->get()->result();
+		return $datos;
+	}
+	function listarProductoC(){
+		$datos=$this->db->select('idproducto,nombreprod,precio,img')
+			->from('producto')->where('estado','1')->get()->result();
 		return $datos;
 	}
 	function listarPorTipo($tipoProd){
@@ -27,15 +30,21 @@ class Modelo extends CI_Model{
 		->where('idtipoprod',$tipoProd)->from('producto')->get()->result();
 		return $datos;
 	}
+	function listarPorTipoC($tipoProd){
+		$datos=$this->db->select('idproducto,nombreprod,precio,img')
+		->where('idtipoprod',$tipoProd)->from('producto')->get()->result();
+		return $datos;
+	}
 	/*la funcion modificar tambien servirá para realizar la eliminacion lógica de un producto*/
 	function buscarProducto($id){
 		$datos=$this->db->select('nombreprod as nombre,precio,stock,idmedida,idtipoprod as idtipo')
-						->where('idproducto',$id)
-						->from('producto')->get()->result();
+			->where('idproducto',$id)->from('producto')->get()->result();
 		return $datos;
 	}
+	/*solo trae como resultado el nombre y el precio del producto*/
 	function buscarProducId($id){
-		$dato=$this->db->select('nombreprod,precio')->where('idproducto',$id)->from('producto')->get()->result();
+		$dato=$this->db->select('nombreprod,precio')->where('idproducto',$id)
+		->where('estado','1')->from('producto')->get()->result();
 		return $dato;
 	}
 	function modificarProducto($id,$producto){
@@ -46,12 +55,14 @@ class Modelo extends CI_Model{
 	}
 
 	function listartipoprod(){
-		$datos=$this->db->select('idtipoprod,tipoprod')->from('tipoproducto')->get()->result();
+		$datos=$this->db->select('idtipoprod,tipoprod')->where('estado','1')
+		->from('tipoproducto')->get()->result();
 		return $datos;
 	}
 
 	function listarmedida(){
-		$datos=$this->db->select('idmedida,medida')->from('unidadmedida')->get()->result();
+		$datos=$this->db->select('idmedida,medida')->where('estado','1')
+		->from('unidadmedida')->get()->result();
 		return $datos;
 	}
 
@@ -61,7 +72,7 @@ class Modelo extends CI_Model{
 		$this->db->where('usuario',$usuario)->from('usuario');
 		if ($this->db->count_all_results() === 1) {
 			$logueo=$this->db->select('idusuario,idtipousuario')
-			->where('usuario',$usuario)->where('password',$password)
+			->where('usuario',$usuario)->where('password',$password)->where('estado','1')
 			->from('usuario')->get()->result();
 			return $logueo;
 		} else return false;
@@ -103,7 +114,7 @@ class Modelo extends CI_Model{
 		->from('datos d')
 		->join('usuario u','u.idusuario=d.idusuario')
 		->join('tipousuario tuser','tuser.tipousuario=u.idtipousuario')
-		->where('idtipousuario',$tipoUser)
+		->where('u.idtipousuario',$tipoUser)->where('u.estado','1')
 		->get()->result();
 		return $datos;
 	}
@@ -122,12 +133,12 @@ class Modelo extends CI_Model{
 	}
 	function listarProveedor(){
 		$datos=$this->db->select('idproveedor,nombre,apellido,direccion,compania,fono,dni,ruc')
-		->from('proveedor')->get()->result();
+		->where('estado','1')->from('proveedor')->get()->result();
 		return $datos;
 	}
 	function buscarProveedor($idProveedor){
 		$dato=$this->db->select('nombre,apellido,direccion,compania,fono,dni,ruc')
-		->from('proveedor')->where('idproveedor',$idProveedor)->get()->result();
+		->from('proveedor')->where('idproveedor',$idProveedor)->where('estado','1')->get()->result();
 		return $dato;
 	}
 	function modificarProveedor($idProveedor,$proveedor){

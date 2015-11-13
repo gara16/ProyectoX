@@ -25,11 +25,11 @@ class Clogin extends CI_Controller{
 		$this->validarDatosLogueo();
 		if ($this->form_validation->run()!=FALSE) {
 			$mensaje=$this->validarLogueo($user,$password);
-		} else $mensaje['error']="Los datos proporcionados son erroneos";
+		} else $mensaje['error']="Los datos proporcionados son erróneos";
 		echo json_encode($mensaje);
 	}
 	function validarLogueo($user,$password){
-		$dato=$this->modelo->loguear($user,$password);
+		$dato=$this->modelo->loguear($user,md5($password));
 		if ($dato!=null) {
 			settype($dato['0'],"array");
 			$data=array('alias'=>$user,'tipouser'=>$dato['0']['idtipousuario'],'idUser'=>$dato['0']['idusuario']);
@@ -42,9 +42,7 @@ class Clogin extends CI_Controller{
 	function obtenerSession(){
 		if($this->session->userdata('alias')){
 			$dato=array('estado'=>TRUE,'id'=>$this->session->userdata('idUser'),'user'=>$this->session->userdata('alias'),'tipouser'=>$this->session->userdata('tipouser'));
-		}else{
-			$dato=array('estado'=>FALSE);
-		}
+		}else $dato=array('estado'=>FALSE);
 		echo json_encode($dato);
 	}
 
@@ -75,7 +73,7 @@ class Clogin extends CI_Controller{
 		$this->validarDatosUser();
 		if($this->form_validation->run()!=FALSE){
 			if ($this->modelo->existeUsuario($usuario)==null) {
-				$Ausuario=array('usuario'=>$usuario,'password'=>$password,'idtipousuario'=>'2');
+				$Ausuario=array('usuario'=>$usuario,'password'=>md5($password),'idtipousuario'=>'2','estado'=>'1');
 				$iduser=$this->modelo->agregarUsuario($Ausuario);
 				if ($iduser!=null) {
 					settype($iduser["0"], "array");

@@ -80,19 +80,25 @@ class Cadmin extends CI_Controller{
 	function eliminarProducto(){
 		$_POST=json_decode(file_get_contents('php://input'),TRUE);
 		$id=$this->input->post('idproducto');
-		$producto=array('estado'=>'0');
-		if ($this->modelo->modificarProducto($id,$producto)) {
-			$valor="Exito al eliminar producto";
-		} else $valor="Ocurrio un error al eliminar producto";
+		$this->form_validation->set_rules('idproducto','IdProducto','required|is_natural');
+		if ($this->form_validation->run()!=FALSE) {
+			$producto=array('estado'=>'0');
+			if ($this->modelo->modificarProducto($id,$producto)) {
+				$valor="Exito al eliminar producto";
+			} else $valor="Ocurrio un error al eliminar producto";
+		} else $valor="El Codigo del producto no es válido";
 		echo json_encode($valor);
 	}
 	function buscarProducto(){
 		$_POST=json_decode(file_get_contents('php://input'),TRUE);
 		$id=$this->input->post('idproducto');
-		$array = $this->modelo->buscarProducto($id);
-		$valor['id']=$id;
-		if (count($array)>0) $valor['lista']=$array;
-		else $valor['error']="No Existe Producto";
+		$this->form_validation->set_rules('idproducto','IdProducto','required|is_natural');
+		if ($this->form_validation->run()!=FALSE) {
+			$array = $this->modelo->buscarProducto($id);
+			$valor['id']=$id;
+			if (count($array)>0) $valor['lista']=$array;
+			else $valor['error']="No Existe Producto";
+		} else $valor['error']="El Codigo del producto no es válido";
 		echo json_encode($valor);
 	}
 
@@ -150,19 +156,25 @@ class Cadmin extends CI_Controller{
 	function eliminarProveedor(){
 		$_POST=json_decode(file_get_contents('php://input'),TRUE);
 		$id=$this->input->post('idproveedor');
-		$proveedor=array('estado'=>'0');
-		if ($this->modelo->modificarProducto($id,$proveedor)) {
-			$valor="Proovedor eliminado";
-		} else $valor="Ocurrio un error al eliminar Proovedor";
+		$this->form_validation->set_rules('idproveedor','IdProveedor','required|is_natural');
+		if ($this->form_validation->run()!=FALSE) {
+			$proveedor=array('estado'=>'0');
+			if ($this->modelo->modificarProveedor($id,$proveedor)) {
+				$valor="Proovedor eliminado";
+			} else $valor="Ocurrio un error al eliminar Proovedor";
+		} else $valor="El Codigo del Proovedor no es válido";
 		echo json_encode($valor);
 	}
 	function buscarProveedor(){
 		$_POST=json_decode(file_get_contents('php://input'),TRUE);
 		$id=$this->input->post('idproveedor');
-		$array = $this->modelo->buscarProveedor($id);
-		$valor['id']=$id;
-		if (count($array)>0) $valor['lista']=$array;
-		else $valor['error']="No Existe Proveedor";
+		$this->form_validation->set_rules('idproveedor','IdProveedor','required|is_natural');
+		if ($this->form_validation->run()!=FALSE) {
+			$array = $this->modelo->buscarProveedor($id);
+			$valor['id']=$id;
+			if (count($array)>0) $valor['lista']=$array;
+			else $valor['error']="No Existe Proveedor";
+		} else $valor="El Codigo del Proovedor no es válido";
 		echo json_encode($valor);
 	}
 

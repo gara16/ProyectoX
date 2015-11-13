@@ -18,7 +18,7 @@ class CUsuario extends CI_Controller{
 	}
 
 	function listarProducto(){
-		$array = $this->modelo->listarProducto();
+		$array = $this->modelo->listarProductoC();
 		if (count($array)>0) $valor['lista']=$array;
 		else $valor['error']="No hay Productos";
 		echo json_encode($valor);
@@ -44,10 +44,13 @@ class CUsuario extends CI_Controller{
 	function buscarProducto(){
 		$_POST=json_decode(file_get_contents('php://input'),TRUE);
 		$id=$this->input->post('idproducto');
-		$array = $this->modelo->buscarProducto($id);
-		$valor['id']=$id;
-		if (count($array)>0) $valor['lista']=$array;
-		else $valor['error']="No Existe Producto";
+		$this->form_validation->set_rules('idproducto','IdProducto','required|is_natural');
+		if ($this->form_validation->run()!=FALSE) {
+			$array = $this->modelo->buscarProducto($id);
+			$valor['id']=$id;
+			if (count($array)>0) $valor['lista']=$array;
+			else $valor['error']="No Existe Producto";
+		} else $mensaje['error']="El codigo proporcionado es incorrecto";
 		echo json_encode($valor);
 	}
 
